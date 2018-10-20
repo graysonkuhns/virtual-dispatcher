@@ -1,0 +1,78 @@
+#header {
+    width: 100%;
+    text-align: center;
+}
+
+#headerText {
+    font-size: 60px;
+}
+
+form {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#nameText {
+    font-size: 45px;
+    padding: 7px;
+    display: inline;
+}
+
+#name {
+    position: relative;
+    left: 0px;
+    display: inline;
+}
+
+input {
+    font-size: 40px;
+    padding: 7px;
+    border-radius: 5px;
+    border: 0;
+    text-align: center;
+}
+
+#checkin {
+    margin-top: 40px;
+    width: 50%;
+}
+
+#checkin:hover {
+    cursor: pointer;
+}
+
+.message {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 40px;
+}
+
+#goodMessage {
+    color: rgb(29, 126, 29);
+}
+
+#badMessage {
+    color: rgb(255, 65, 65);
+}
+
+#searchList {
+    position: absolute;
+    left: 50%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.searchItem {
+    padding: 5px 30px;
+    margin: 10px 10px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.searchItem:hover {
+    background-color: rgb(165, 165, 165);
+    cursor: pointer;
+}

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="checkinStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/checkinStyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="checkinScript.js"></script>
+        <script type="text/javascript" src="scripts/checkinScript.js"></script>
     </head>
     <body>
         <div id="header">
             <h1 id="headerText">Check In</h1>
         </div>
 
-        <form action="#" method="POST" id="checkinForm">
+        <form action="#" method="POST" id="checkinForm" autocomplete="off">
+            <p id="nameText">Name:</p>
             <input type="text" name="name" id="name"/>
-            <input type="submit" id="checkin" name="checkin"/>
+            <div id="searchList"></div>
+            <input type="submit" id="checkin" name="checkin" value="Check in"/>
         </form>
 
-        <div id="message"></div>
+        <div class="message"></div>
     </body>
 </html>
