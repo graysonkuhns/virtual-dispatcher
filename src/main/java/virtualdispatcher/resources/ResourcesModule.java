@@ -12,5 +12,6 @@ public class ResourcesModule extends AbstractModule {
 
     resourceMultibinder.addBinding().to(FlightsResource.class);
     resourceMultibinder.addBinding().to(PilotsResource.class);
+    resourceMultibinder.addBinding().to(AircraftResource.class);
   }
 }

@@ -4,7 +4,9 @@ import com.google.inject.AbstractModule;
 import com.google.inject.PrivateModule;
 import io.dropwizard.setup.Environment;
 import virtualdispatcher.VirtualDispatcherConfiguration;
+import virtualdispatcher.db.dao.AircraftDAO;
 import virtualdispatcher.db.dao.FlightDAO;
+import virtualdispatcher.db.dao.PilotDAO;
 import virtualdispatcher.db.mapper.FlightMapper;
 
 /**
@@ -45,5 +47,7 @@ public class DatabaseModule extends AbstractModule {
 
     // DAOs
     bind(FlightDAO.class);
+    bind(PilotDAO.class);
+    bind(AircraftDAO.class);
   }
 }
