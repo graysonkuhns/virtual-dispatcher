@@ -1,5 +1,6 @@
 package virtualdispatcher.api;
 
+import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 
 public class DefaultAircraft implements Aircraft {
@@ -8,6 +9,7 @@ public class DefaultAircraft implements Aircraft {
     private final int aircraftId;
     private boolean operational;
 
+    @Inject
     public DefaultAircraft(
         @Assisted("id") final int aircraftId,
         @Assisted("operational") boolean operational){

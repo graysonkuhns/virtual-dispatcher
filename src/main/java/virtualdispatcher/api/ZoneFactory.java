@@ -16,7 +16,6 @@ public interface ZoneFactory {
      *
      * @return The {@link Zone}.
      */
-    Zone create(
-            @Assisted("id") int id);
+    Zone create(@Assisted("id") int id);
 
 }

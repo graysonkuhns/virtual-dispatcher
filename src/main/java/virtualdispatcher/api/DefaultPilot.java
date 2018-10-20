@@ -1,5 +1,8 @@
 package virtualdispatcher.api;
 
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
+
 public class DefaultPilot implements Pilot {
 
     // properties
@@ -8,7 +11,12 @@ public class DefaultPilot implements Pilot {
     private final String lastName;
 
     // constructor
-    public DefaultPilot(final int id, final String firstName, final String lastName){
+    @Inject
+    public DefaultPilot(
+        @Assisted("id") final int id,
+        @Assisted("firstName") final String firstName,
+        @Assisted("lastName") final String lastName) {
+
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -16,12 +24,18 @@ public class DefaultPilot implements Pilot {
 
     // methods
     @Override
-    public int getId() { return id;}
+    public int getId() {
+        return id;
+    }
 
     @Override
-    public String getFirstName() { return firstName;}
+    public String getFirstName() {
+        return firstName;
+    }
     
 
     @Override
-    public String getLastName() {return lastName; }
+    public String getLastName() {
+        return lastName;
+    }
 }
