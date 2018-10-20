@@ -20,6 +20,7 @@ public class FlightMapper implements RowMapper<Flight> {
   // Constants
   private static final String KEY_ID = "id";
   private static final String KEY_COMPLETED = "completed";
+  private static final String KEY_STARTED = "started";
   private static final String KEY_PILOT_ID = "pilot_id";
   private static final String KEY_AIRCRAFT_ID = "aircraft_id";
   private static final String KEY_ZONE_ID = "zone_id";
@@ -42,6 +43,7 @@ public class FlightMapper implements RowMapper<Flight> {
     return flightFactory.create(
         rs.getInt(KEY_ID),
         rs.getBoolean(KEY_COMPLETED),
+        rs.getBoolean(KEY_STARTED),
         rs.getInt(KEY_PILOT_ID),
         rs.getInt(KEY_AIRCRAFT_ID),
         rs.getInt(KEY_ZONE_ID));
