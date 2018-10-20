@@ -24,7 +24,7 @@ function loadPlanes(){
         if(plane.status == "Available"){
             planeList.innerHTML += '<div class="plane availablePlane">Plane ' + plane.id + ' <br><p class="detailInfo">Available</p></div>';
         } else {
-            planeList.innerHTML += '<div class="plane">Plane ' + plane.id + ' <br><p class="detailInfo">Due back: 2:00 PM (17 Mins)</p></div>';
+            planeList.innerHTML += '<div class="plane">Plane ' + plane.id + ' <br><p class="detailInfo">Jon Smith Zone 6 Due back: 2:00 PM (17 Mins)</p></div>';
         }
         
     });

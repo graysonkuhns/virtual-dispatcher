@@ -1,0 +1,18 @@
+#header {
+    width: 100%;
+    text-align: center;
+}
+
+#headerText {
+    font-size: 60px;
+}
+
+#flightList {
+    padding: 10px;
+}
+
+.listItem {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+}

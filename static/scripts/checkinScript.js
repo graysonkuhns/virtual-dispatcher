@@ -1,12 +1,27 @@
-var pilots = ["Jon Bockhorst", "Joe Smith", "Tom Gerry"];
+var pilots = [
+    {
+        f_name: "Jon",
+        l_name: "Bockhorst",
+        id: 1
+    }, 
+    {
+        f_name: "Joe",
+        l_name: "Smith",
+        id: 34
+    }, 
+    {
+        f_name: "Bob",
+        l_name: "Larry",
+        id: 47
+    }];
 
 $(document).ready(function(){
-    // var url = "/api/pilot"
-    // $.getJSON(url, function(data) { 
-    //     data.foreach(function(pilot){
-    //         pilots.push(pilot.f_name + " " + pilot.l_name);
-    //     });
-    // });
+    var url = "/api/pilot"
+    $.getJSON(url, function(data) { 
+        data.foreach(function(pilot){
+            pilots.push(pilot);
+        });
+    });
     pilots.sort();
 
     $("#name").on("input", function() {
@@ -14,27 +29,33 @@ $(document).ready(function(){
         var name = this.value;
         if(name != ""){
             pilots.forEach(function(pilot){
-                if(pilot.startsWith(name) || pilot.toLowerCase().startsWith(name)){
-                    $("#searchList").append("<div class='searchItem'>" + pilot + "</div>");
+                var fullName = pilot.f_name + " " + pilot.l_name;
+                if(pilot.f_name.startsWith(name) || pilot.f_name.toLowerCase().startsWith(name) || 
+                   pilot.l_name.startsWith(name) || pilot.l_name.toLowerCase().startsWith(name) || 
+                   fullName.startsWith(name) || fullName.toLowerCase().startsWith(name)
+                ){
+                    $("#searchList").append("<div class='searchItem' data-id=" + pilot.id + ">" + pilot.f_name + " " + pilot.l_name + "</div>");
                 }
             });
         }
 
         $(".searchItem").on("click", function() {
             $("#name").val($(this).html());
+            $("#name").attr("data-id", $(this).attr("data-id"));
             $("#searchList").empty();
         });
     });
 
     $("#checkinForm").submit(function(event){
         var name = $("#name").val();
+        var pilot_id = $("#name").attr("data-id");
         $("#name").val("");
         event.preventDefault();
         $.ajax({
             type: 'POST',
             url: '/api/availablities',
             data: {
-                id: name
+                id: pilot_id
             },
             success:function(){
                 var good = true;

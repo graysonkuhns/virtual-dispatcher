@@ -36,10 +36,10 @@ INSERT INTO avaliability
 		(1, TIME_FORMAT("10:33:00", "%T")),
 		(5, TIME_FORMAT("13:14:47", "%T"));
 	
-INSERT INTO flights (completed, pilot_id, aircraft_id, zone_id)
+INSERT INTO flights (started, completed, pilot_id, aircraft_id, zone_id)
 	VALUES
-		(true, 2, 4, 2),
-		(true, 1, 6, 3),
-		(true, 3, 2, 1),
-		(false, 3, 1, 1),
-		(false, 4, 2, 1);
+		(true, true, 2, 4, 2),
+		(true, true, 1, 6, 3),
+		(true, true, 3, 2, 1),
+		(false, false, 3, 1, 1),
+		(false, false, 4, 2, 1);

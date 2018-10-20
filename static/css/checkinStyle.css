@@ -21,9 +21,7 @@ form {
 }
 
 #name {
-    position: relative;
-    left: 0px;
-    display: inline;
+    width: 35%;
 }
 
 input {
@@ -35,8 +33,10 @@ input {
 }
 
 #checkin {
-    margin-top: 40px;
     width: 50%;
+    display: block;
+    margin: auto;
+    margin-top: 40px;
 }
 
 #checkin:hover {
@@ -59,7 +59,7 @@ input {
 
 #searchList {
     position: absolute;
-    left: 50%;
+    left: 44%;
     background-color: rgb(255, 255, 255);
     margin-top: 5px;
     border-radius: 10px;
@@ -68,7 +68,7 @@ input {
 .searchItem {
     padding: 5px 30px;
     margin: 10px 10px;
-    font-size: 20px;
+    font-size: 30px;
     border-radius: 10px;
 }
 
