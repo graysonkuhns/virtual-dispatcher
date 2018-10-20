@@ -1,6 +1,7 @@
 var pilots = [];
 var pilotName = "";
 var pilotId = "";
+var currentFlight;
 
 var host = "http://code-a-thon.xellitix.com:8080";
 
@@ -97,6 +98,8 @@ $(document).ready(function(){
         $.getJSON(url, function(flightList) { 
             for(let flight of flightList){
                 if(flight.pilotId == pilotId && !flight.completeted){
+                    currentFlight = flight;
+
                     $("#flightNumber").html("Flight# " + flight.id);
                     $("#aircraftNumber").html("Plane " + flight.aircraftId);
                     $("#pilotName").html(pilotName);
@@ -163,7 +166,8 @@ $(document).ready(function(){
     });
 
     $("#needsMaintenance").on("click", function(){
-
+        console.log(currentFlight.aircraftId);
+        currentFlight.aircraftId;
     });
 });
 
