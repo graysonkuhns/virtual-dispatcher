@@ -19,8 +19,8 @@ public class PilotMapper implements RowMapper<Pilot> {
 
     // Constants
     private static final String KEY_ID = "id";
-    private static final String KEY_FIRSTNAME = "firstName";
-    private static final String KEY_LASTNAME = "lastName";
+    private static final String KEY_FIRSTNAME = "f_name";
+    private static final String KEY_LASTNAME = "l_name";
 
     // Dependencies
     private final PilotFactory pilotFactory;

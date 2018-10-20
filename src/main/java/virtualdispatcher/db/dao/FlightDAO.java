@@ -1,6 +1,7 @@
 package virtualdispatcher.db.dao;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import java.util.List;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.mapper.RowMappers;
@@ -10,11 +11,11 @@ import virtualdispatcher.db.mapper.FlightMapper;
 /**
  * {@link Flight}
  */
+@Singleton
 public class FlightDAO {
 
   // Dependencies
   private final Jdbi jdbi;
-  private final FlightMapper flightMapper;
 
   /**
    * Constructor.
@@ -28,7 +29,6 @@ public class FlightDAO {
       final FlightMapper flightMapper) {
 
     this.jdbi = jdbi;
-    this.flightMapper = flightMapper;
 
     // Register the mapper if it has not been already
     if (!jdbi.getConfig().get(RowMappers.class).findFor(Flight.class).isPresent()) {
