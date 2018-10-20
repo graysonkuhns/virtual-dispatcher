@@ -4,12 +4,37 @@
         <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
         <link rel="stylesheet" type="text/css" href="css/dispatcherStyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="scripts/dispatcherScript.js"></script>
+        <!--<script type="text/javascript" src="scripts/dispatcherScript.js"></script>-->
     </head>
     <body>
         <div id="planeInfo" class="column">
             <p class="header">Planes</p>
-            <div id="planesList"></div>
+            <div id="planesList">
+            
+                <div class = "plane">
+                    <div class="planeBox">
+                        <div class="planeInfoBox">
+                            <img class="pilotImg" src="images/pilot.png"/>
+                            <div id="pilotName">Pilot Name</div>
+                        </div>
+                        <div class="planeInfoBox">
+                            <img class="zoneImg" src="images/zone.png"/>
+                            <div id="zone">Zone</div>
+                        </div>
+                        <div class="planeInfoBox" id="matienenceBox">
+                            <img class="maintenanceImg" src="images/maintenance.png"/>
+                            <div id="maintenance">MX</div>
+                            <form action="#" method="POST">
+                                <input type="checkbox" id="maintenanceTrigger">
+                            </form>
+                        </div>
+                    </div>
+                    <img class="tailBottom" src="images/tail_avaliable.png"/>
+                    <img class="tailTop" src="images/tail_top.png"/>
+                    <div id="planeNumber">10</div>
+                </div>
+                
+            </div>
         </div>
         
         <div id="waitingList" class="column">
