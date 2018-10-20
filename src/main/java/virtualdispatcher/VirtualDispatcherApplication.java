@@ -1,5 +1,6 @@
 package virtualdispatcher;
 
+import com.google.inject.Guice;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -23,7 +24,10 @@ public class VirtualDispatcherApplication extends Application<VirtualDispatcherC
     @Override
     public void run(final VirtualDispatcherConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+        Guice
+            .createInjector(new ApplicationModule(environment, configuration))
+            .getInstance(ApplicationRunner.class)
+            .run(environment, configuration);
     }
 
 }

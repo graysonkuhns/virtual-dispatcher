@@ -17,7 +17,7 @@ public class JdbiModule extends AbstractModule {
    * @param environment The application environment.
    * @param config The application configuration.
    */
-  JdbiModule(
+  public JdbiModule(
       final Environment environment,
       final VirtualDispatcherConfiguration config) {
 

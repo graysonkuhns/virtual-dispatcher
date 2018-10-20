@@ -1,8 +1,10 @@
 package virtualdispatcher.db;
 
+import com.google.inject.AbstractModule;
 import com.google.inject.PrivateModule;
 import io.dropwizard.setup.Environment;
 import virtualdispatcher.VirtualDispatcherConfiguration;
+import virtualdispatcher.db.dao.FlightDAO;
 import virtualdispatcher.db.mapper.FlightMapper;
 
 /**
@@ -10,7 +12,7 @@ import virtualdispatcher.db.mapper.FlightMapper;
  *
  * @author Grayson Kuhns
  */
-public class DatabaseModule extends PrivateModule {
+public class DatabaseModule extends AbstractModule {
 
   // Properties
   private final Environment environment;
@@ -42,5 +44,6 @@ public class DatabaseModule extends PrivateModule {
     bind(FlightMapper.class);
 
     // DAOs
+    bind(FlightDAO.class);
   }
 }
