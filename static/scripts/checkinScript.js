@@ -93,10 +93,10 @@ $(document).ready(function(){
 
                     //Fade out message after 10 seconds
                     setTimeout(function(){
-                        $(".message p").fadeOut("slow", function () {
-                            $(".message p").remove();
+                        $(".message").fadeOut("slow", function () {
+                            $(".message").html("");
+                            $(".message").fadeIn("fast");
                         });
-                        
                     }, 10000);
                 }
             });
@@ -125,10 +125,10 @@ $(document).ready(function(){
 
                     //Fade out message after 10 seconds
                     setTimeout(function(){
-                        $(".message p").fadeOut("slow", function () {
-                            $(".message p").remove();
+                        $(".message").fadeOut("slow", function () {
+                            $(".message").html("");
+                            $(".message").fadeIn("fast");
                         });
-                        
                     }, 10000);
                 }
             });

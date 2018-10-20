@@ -67,7 +67,7 @@ $(document).ready(function(){
 
         pilotName = name;
         pilotId = pilot_id;
-        showFlight();
+        refreshStatus();
     });
 
     function showLogin(){
@@ -78,35 +78,92 @@ $(document).ready(function(){
     }
 
     function refreshStatus(){
-        var currentFlight;
-
-        var url = host + "/api/flights"
-        $.getJSON(url, function(flightList) { 
-            for(let flight of flightList){
-                if(flight.pilotId == pilotId && !flight.completeted){
-                    currentFlight = flight;
-                    break;
-                }
-            }
-        });
-
-        $("#pilotName").html(pilotName);
-        $("#flightNumber").html("Flight# " + currentFlight.id);
-        $("#aircraftNumber").html("Plane " + currentFlight.aircraftId);
-
-        if(currentFlight.started)
+        loadFlightInfo();
 
         setInterval(function(){
-            $("#pilotName").html(pilotName);
+            loadFlightInfo();
         }, 1000);
     }
     
     function showFlight(){
-        refreshStatus();
         $("#loginView").addClass("hidden");
         $("#loginView").removeClass("visible");
         $("#flightView").addClass("visible");
         $("#flightView").removeClass("hidden");
     }
+
+    function loadFlightInfo(){
+        var url = host + "/api/flights"
+        $.getJSON(url, function(flightList) { 
+            for(let flight of flightList){
+                if(flight.pilotId == pilotId && !flight.completeted){
+                    $("#flightNumber").html("Flight# " + flight.id);
+                    $("#aircraftNumber").html("Plane " + flight.aircraftId);
+                    $("#pilotName").html(pilotName);
+
+                    if(flight.completed){
+                        //Flight is completed
+                        $("#status").html("Flight Completed");
+
+                        $("#options").addClass("hidden");
+                        $("#flightOver").addClass("visible")
+                        $("#options").removeClass("visible");
+                        $("#flightOver").removeClass("hidden")
+                    } else {
+                        $("#options").addClass("visible");
+                        $("#flightOver").addClass("hidden")
+                        $("#options").removeClass("hidden");
+                        $("#flightOver").removeClass("visible")
+
+                        if(flight.started){
+                            //Flight is started but not completed
+                            $("#status").html("Flight in progress");
+
+                            $("#flightStarted").addClass("hidden");
+                            $("#flightStarted").removeClass("visible")
+
+                            $("#flightFinished").addClass("visible");
+                            $("#flightFinished").removeClass("hidden")
+
+                        } else {
+                            //Flight is not started
+                            $("#status").html("Flight not started");
+
+                            $("#flightStarted").addClass("visible");
+                            $("#flightStarted").removeClass("hidden")
+
+                            $("#flightFinished").addClass("hidden");
+                            $("#flightFinished").removeClass("visible");
+                        }
+                    }
+
+                    showFlight();
+                    break;
+                }
+            }
+        });
+    }
+
+    $("#flightStarted").on("click", function(){
+        $.ajax({
+            type: 'PATCH',
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json' 
+            },
+            url: host + '/api/availability',
+            data: JSON.stringify({
+                pilotId: pilot_id
+            })
+        });
+    });
+
+    $("#flightFinished").on("click", function(){
+
+    });
+
+    $("#needsMaintenance").on("click", function(){
+
+    });
 });
 

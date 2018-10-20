@@ -26,7 +26,6 @@ function loadPlanes(){
                         } else {
                             aircraftList[plane.id - 1] = '<div class="plane availablePlane">Plane ' + plane.id + ' <br><p class="detailInfo">Available</p></div>';
                         }
-
                         
                         var htmlList = "";
                         aircraftList.forEach(function(item){
@@ -85,6 +84,15 @@ function loadWaitingList(){
                     $("#pilotList").html(htmlList);
                 });
             });
+
+            waitingList = waitingList.slice(0, waitingPilots.length);
+
+            var htmlList = "";
+            waitingList.forEach(function(item){
+                htmlList += item;
+            });
+
+            $("#pilotList").html(htmlList);
         });
     }, 1000);
 }

@@ -1,9 +1,3 @@
-a {
-    text-decoration-line: none;
-    color: black;
-    font-size: 40px;
-}
-
 #header {
     width: 100%;
 }
@@ -28,10 +22,12 @@ a {
     text-align: center;
     background-color: rgb(252, 94, 94);
     border-radius: 10px;
+    font-size: 40px;
 }
 
 .statusOption:hover {
     background-color:  rgb(199, 72, 72);
+    cursor: pointer;
 }
 
 #flightInfo {
