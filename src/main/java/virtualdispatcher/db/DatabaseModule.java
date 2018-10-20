@@ -8,6 +8,7 @@ import virtualdispatcher.db.dao.AvailabilityDAO;
 import virtualdispatcher.db.dao.FlightDAO;
 import virtualdispatcher.db.dao.PilotDAO;
 import virtualdispatcher.db.mapper.FlightMapper;
+import virtualdispatcher.db.dao.ZoneDAO;
 
 /**
  * Database Guice module.
@@ -45,10 +46,12 @@ public class DatabaseModule extends AbstractModule {
     // Mappers
     bind(FlightMapper.class);
 
+
     // DAOs
     bind(FlightDAO.class);
     bind(PilotDAO.class);
     bind(AircraftDAO.class);
     bind(AvailabilityDAO.class);
+    bind(ZoneDAO.class);
   }
 }
