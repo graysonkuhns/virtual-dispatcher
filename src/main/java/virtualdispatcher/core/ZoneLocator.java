@@ -14,11 +14,11 @@ public class ZoneLocator {
   // Constants
   private static final String QUERY =
       "SELECT\n" +
-      "  zone_id AS id\n" +
+      "  id\n" +
       "FROM\n" +
-      "  flights\n" +
+      "  zones\n" +
       "WHERE\n" +
-      "  zone_id NOT IN (\n" +
+      "  id NOT IN (\n" +
       "    SELECT\n" +
       "      zone_id\n" +
       "    FROM\n" +

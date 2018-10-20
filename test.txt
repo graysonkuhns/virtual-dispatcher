@@ -1,6 +1,6 @@
-INFO  [2018-10-20 21:34:58,700] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
-INFO  [2018-10-20 21:34:58,706] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
-INFO  [2018-10-20 21:34:59,707] io.dropwizard.server.ServerFactory: Starting VirtualDispatcher
+INFO  [2018-10-20 22:46:09,567] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2018-10-20 22:46:09,586] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2018-10-20 22:46:11,358] io.dropwizard.server.ServerFactory: Starting VirtualDispatcher
 ================================================================================
 
                               VirtualDispatcher
@@ -8,10 +8,10 @@ INFO  [2018-10-20 21:34:59,707] io.dropwizard.server.ServerFactory: Starting Vir
 ================================================================================
 
 
-INFO  [2018-10-20 21:34:59,819] org.eclipse.jetty.setuid.SetUIDListener: Opened application@5940b14e{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
-INFO  [2018-10-20 21:34:59,820] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@1cba0321{HTTP/1.1,[http/1.1]}{0.0.0.0:8081}
-INFO  [2018-10-20 21:34:59,823] org.eclipse.jetty.server.Server: jetty-9.4.z-SNAPSHOT; built: 2018-06-05T18:24:03.829Z; git: d5fc0523cfa96bfebfbda19606cad384d772f04c; jvm 11+28
-INFO  [2018-10-20 21:35:00,691] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+INFO  [2018-10-20 22:46:11,574] org.eclipse.jetty.setuid.SetUIDListener: Opened application@5940b14e{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+INFO  [2018-10-20 22:46:11,575] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@1cba0321{HTTP/1.1,[http/1.1]}{0.0.0.0:8081}
+INFO  [2018-10-20 22:46:11,578] org.eclipse.jetty.server.Server: jetty-9.4.z-SNAPSHOT; built: 2018-06-05T18:24:03.829Z; git: d5fc0523cfa96bfebfbda19606cad384d772f04c; jvm 11+28
+INFO  [2018-10-20 22:46:13,316] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
 
     GET     /api/aircraft (virtualdispatcher.resources.AircraftResource)
     GET     /api/availability (virtualdispatcher.resources.AvailabilityResource)
@@ -19,7 +19,7 @@ INFO  [2018-10-20 21:35:00,691] io.dropwizard.jersey.DropwizardResourceConfig: T
     GET     /api/pilots (virtualdispatcher.resources.PilotsResource)
     GET     /api/zones (virtualdispatcher.resources.ZoneResource)
 
-WARN  [2018-10-20 21:35:00,708] org.glassfish.jersey.internal.Errors: The following warnings have been detected: WARNING: HK2 service reification failed for [org.glassfish.jersey.jaxb.internal.XmlJaxbElementProvider$App] with an exception:
+WARN  [2018-10-20 22:46:13,369] org.glassfish.jersey.internal.Errors: The following warnings have been detected: WARNING: HK2 service reification failed for [org.glassfish.jersey.jaxb.internal.XmlJaxbElementProvider$App] with an exception:
 MultiException stack 1 of 2
 java.lang.NoClassDefFoundError: javax/xml/bind/PropertyException
 	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
@@ -21004,17 +21004,17 @@ java.lang.IllegalArgumentException: Errors were discovered while reifying System
 	at virtualdispatcher.VirtualDispatcherApplication.main(VirtualDispatcherApplication.java:11)
 
 
-INFO  [2018-10-20 21:35:00,711] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@61d09475{/,null,AVAILABLE}
-INFO  [2018-10-20 21:35:00,720] io.dropwizard.setup.AdminEnvironment: tasks = 
+INFO  [2018-10-20 22:46:13,373] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@61d09475{/,null,AVAILABLE}
+INFO  [2018-10-20 22:46:13,391] io.dropwizard.setup.AdminEnvironment: tasks = 
 
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
 
-INFO  [2018-10-20 21:35:00,727] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@3ec7eb5{/,null,AVAILABLE}
-INFO  [2018-10-20 21:35:00,742] org.eclipse.jetty.server.AbstractConnector: Started application@5940b14e{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
-INFO  [2018-10-20 21:35:00,744] org.eclipse.jetty.server.AbstractConnector: Started admin@1cba0321{HTTP/1.1,[http/1.1]}{0.0.0.0:8081}
-INFO  [2018-10-20 21:35:00,745] org.eclipse.jetty.server.Server: Started @5036ms
-INFO  [2018-10-20 21:35:15,747] org.eclipse.jetty.server.AbstractConnector: Stopped application@5940b14e{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
-INFO  [2018-10-20 21:35:15,748] org.eclipse.jetty.server.AbstractConnector: Stopped admin@1cba0321{HTTP/1.1,[http/1.1]}{0.0.0.0:8081}
-INFO  [2018-10-20 21:35:15,750] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@3ec7eb5{/,null,UNAVAILABLE}
-INFO  [2018-10-20 21:35:15,761] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@61d09475{/,null,UNAVAILABLE}
+INFO  [2018-10-20 22:46:13,408] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@3ec7eb5{/,null,AVAILABLE}
+INFO  [2018-10-20 22:46:13,465] org.eclipse.jetty.server.AbstractConnector: Started application@5940b14e{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+INFO  [2018-10-20 22:46:13,497] org.eclipse.jetty.server.AbstractConnector: Started admin@1cba0321{HTTP/1.1,[http/1.1]}{0.0.0.0:8081}
+INFO  [2018-10-20 22:46:13,499] org.eclipse.jetty.server.Server: Started @7709ms
+INFO  [2018-10-20 22:46:31,799] org.eclipse.jetty.server.AbstractConnector: Stopped application@5940b14e{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+INFO  [2018-10-20 22:46:31,802] org.eclipse.jetty.server.AbstractConnector: Stopped admin@1cba0321{HTTP/1.1,[http/1.1]}{0.0.0.0:8081}
+INFO  [2018-10-20 22:46:31,805] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@3ec7eb5{/,null,UNAVAILABLE}
+INFO  [2018-10-20 22:46:31,838] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@61d09475{/,null,UNAVAILABLE}
