@@ -14,5 +14,17 @@ public class ApiModule extends AbstractModule {
     install(new FactoryModuleBuilder()
       .implement(Flight.class, DefaultFlight.class)
       .build(FlightFactory.class));
+
+    install(new FactoryModuleBuilder()
+            .implement(Aircraft.class, DefaultAircraft.class)
+            .build(AircraftFactory.class));
+
+    install(new FactoryModuleBuilder()
+            .implement(Pilot.class, DefaultPilot.class)
+            .build(PilotFactory.class));
+
+    install(new FactoryModuleBuilder()
+            .implement(Zone.class, DefaultZone.class)
+            .build(ZoneFactory.class));
   }
 }
