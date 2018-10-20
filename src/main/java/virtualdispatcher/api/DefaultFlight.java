@@ -1,5 +1,8 @@
 package virtualdispatcher.api;
 
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
+
 /**
  * Default {@link Flight} implementation.
  *
@@ -10,23 +13,32 @@ public class DefaultFlight implements Flight {
   // Properties
   private final int id;
   private final boolean completed;
+  private final int pilotId;
   private final int aircraftId;
+  private final int zoneId;
 
   /**
    * Constructor.
    *
    * @param id The ID.
    * @param completed True if the flight is complete.
+   * @param pilotId The pilot ID.
    * @param aircraftId The aircraft associated with the flight.
+   * @param zoneId The zone ID.
    */
+  @Inject
   DefaultFlight(
-      final int id,
-      final boolean completed,
-      final int aircraftId) {
+      @Assisted("id") final int id,
+      @Assisted("completed") final boolean completed,
+      @Assisted("pilotId") final int pilotId,
+      @Assisted("aircraftId") final int aircraftId,
+      @Assisted("zoneId") final int zoneId) {
 
     this.id = id;
     this.completed = completed;
+    this.pilotId = pilotId;
     this.aircraftId = aircraftId;
+    this.zoneId = zoneId;
   }
 
   /**
@@ -50,6 +62,16 @@ public class DefaultFlight implements Flight {
   }
 
   /**
+   * Gets the pilot ID.
+   *
+   * @return The pilot ID.
+   */
+  @Override
+  public int getPilotId() {
+    return pilotId;
+  }
+
+  /**
    * Gets the aircraft ID associated with the flight.
    *
    * @return The aircraft ID.
@@ -57,5 +79,15 @@ public class DefaultFlight implements Flight {
   @Override
   public int getAircraftId() {
     return aircraftId;
+  }
+
+  /**
+   * Gets the zone ID.
+   *
+   * @return The zone ID.
+   */
+  @Override
+  public int getZoneId() {
+    return zoneId;
   }
 }

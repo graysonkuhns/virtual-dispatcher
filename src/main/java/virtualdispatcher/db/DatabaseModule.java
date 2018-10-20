@@ -1,6 +1,9 @@
 package virtualdispatcher.db;
 
 import com.google.inject.PrivateModule;
+import io.dropwizard.setup.Environment;
+import virtualdispatcher.VirtualDispatcherConfiguration;
+import virtualdispatcher.db.mapper.FlightMapper;
 
 /**
  * Database Guice module.
@@ -9,11 +12,35 @@ import com.google.inject.PrivateModule;
  */
 public class DatabaseModule extends PrivateModule {
 
+  // Properties
+  private final Environment environment;
+  private final VirtualDispatcherConfiguration config;
+
+  /**
+   * Constructor.
+   *
+   * @param environment The application environment.
+   * @param config The application configuration.
+   */
+  public DatabaseModule(
+      final Environment environment,
+      final VirtualDispatcherConfiguration config) {
+
+    this.environment = environment;
+    this.config = config;
+  }
+
   /**
    * Configures the module.
    */
   @Override
   protected void configure() {
+    // Jdbi
+    install(new JdbiModule(environment, config));
 
+    // Mappers
+    bind(FlightMapper.class);
+
+    // DAOs
   }
 }
