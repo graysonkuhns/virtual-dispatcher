@@ -2,8 +2,4 @@
 
 #!/usr/bin/env bash
 
-docker run \
-  --name virtual-dispatcher \
-  --network host \
-  -d \
-  virtual-dispatcher:latest
+docker run --name virtual-dispatcher --network host -d virtual-dispatcher:latest
