@@ -2,6 +2,7 @@ package virtualdispatcher.resources;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
+import virtualdispatcher.api.Availability;
 
 public class ResourcesModule extends AbstractModule {
 
@@ -13,5 +14,6 @@ public class ResourcesModule extends AbstractModule {
     resourceMultibinder.addBinding().to(FlightsResource.class);
     resourceMultibinder.addBinding().to(PilotsResource.class);
     resourceMultibinder.addBinding().to(AircraftResource.class);
+    resourceMultibinder.addBinding().to(AvailabilityResource.class);
   }
 }
