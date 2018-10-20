@@ -1,8 +1,10 @@
 package virtualdispatcher.api;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.time.Instant;
+import virtualdispatcher.core.serialization.InstantSerializer;
 
 public class DefaultAvailability implements Availability {
 
@@ -34,6 +36,7 @@ public class DefaultAvailability implements Availability {
    *
    * @return The time the availability was created.
    */
+  @JsonSerialize(using = InstantSerializer.class)
   @Override
   public Instant getTimeCreated() {
     return timeCreated;

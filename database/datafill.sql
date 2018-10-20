@@ -32,9 +32,9 @@ INSERT INTO zones
 	
 INSERT INTO availability
 	VALUES
-		(2, TIME_FORMAT("11:02:12", "%T")),
-		(1, TIME_FORMAT("10:33:00", "%T")),
-		(5, TIME_FORMAT("13:14:47", "%T"));
+		(2, "2018-10-20 11:02:12"),
+		(1, "2018-10-20 10:33:00"),
+		(5, "2018-10-20 13:14:47");
 	
 INSERT INTO flights (started, completed, pilot_id, aircraft_id, zone_id)
 	VALUES

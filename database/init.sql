@@ -29,7 +29,7 @@ CREATE TABLE zones (
 
 CREATE TABLE availability (
 	pilot_id SMALLINT UNSIGNED NOT NULL UNIQUE,
-	created TIME NOT NULL,
+	created TIMESTAMP NOT NULL,
 	PRIMARY KEY (pilot_id)
 );
 
