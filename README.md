@@ -1,6 +1,6 @@
 # VirtualDispatcher
 
-The Problem.  
+The Problem   
 At the busy University of Central Missouri airport, a human dispatcher is responsible for maintaining the organized flow of flight
 operations by checking in pilots, matching them up with available aircraft, sending them to flight practice zones (so that no more than two
 aircraft are in the same zone), and maintaining a waitlist when there are more pilots than aircraft available. The dispatcher must adapt to
@@ -9,7 +9,7 @@ aircraft, answer the phone, and help with miscellaneous tasks around the airport
 due to task saturation for the dispatcher. This results in inefficient use of aircraft resources, long wait times for pilots, and general 
 frustration for everyone.
 
-The Solution.  
+The Solution   
 Virtual Dispatcher is an automated system that relieves much of the workload for the human dispatcher. There is a desktop computer kiosk
 for pilot check in and check out. An automated system matches checked-in pilots with available aircraft and practice zones & displays this
 information in the pilot waiting area. If necessary, pilots are put on a wait list in the order they checked in. If a pilot needs to leave
