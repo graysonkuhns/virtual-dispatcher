@@ -1,27 +1,20 @@
 package virtualdispatcher.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.FormParam;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import virtualdispatcher.api.Availability;
-import virtualdispatcher.core.CreateAvailabilityRequest;
+import virtualdispatcher.core.request.CreateAvailabilityRequest;
+import virtualdispatcher.core.request.DeleteAvailabilityRequest;
 import virtualdispatcher.db.dao.AvailabilityDAO;
 
 /**
@@ -53,6 +46,17 @@ public class AvailabilityResource implements Resource {
   @Consumes(MediaType.APPLICATION_JSON)
   public Response createAvailability(final CreateAvailabilityRequest request) {
     availabilityDAO.create(request.getPilotId());
+
+    return Response
+        .ok()
+        .build();
+  }
+
+  @DELETE
+  @Timed
+  @Consumes(MediaType.APPLICATION_JSON)
+  public Response deleteAvailability(final DeleteAvailabilityRequest request) {
+    availabilityDAO.delete(request.getPilotId());
 
     return Response
         .ok()

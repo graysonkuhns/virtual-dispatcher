@@ -50,6 +50,27 @@ public class AvailabilityDAO {
     }
 
     /**
+     * Deletes an availability.
+     *
+     * @param availability The {@link Availability}.
+     */
+    public void delete(final Availability availability) {
+        delete(availability.getPilotId());
+    }
+
+    /**
+     * Deletes an {@link Availability}.
+     *
+     * @param pilotId The pilot ID.
+     */
+    public void delete(final int pilotId) {
+        jdbi.useHandle(handle -> handle
+            .createUpdate("DELETE FROM availability WHERE pilot_id = :pilot_id")
+            .bind("pilot_id", pilotId)
+            .execute());
+    }
+
+    /**
      * List availabilities.
      *
      * @return The availabilities.

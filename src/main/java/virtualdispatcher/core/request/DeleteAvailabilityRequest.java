@@ -1,8 +1,6 @@
-package virtualdispatcher.core;
+package virtualdispatcher.core.request;
 
-public class CreateAvailabilityRequest {
-
-  // Properties
+public class DeleteAvailabilityRequest {
   private int pilotId;
 
   public void setPilotId(final int pilotId) {
