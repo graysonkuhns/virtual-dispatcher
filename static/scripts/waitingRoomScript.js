@@ -1,61 +1,36 @@
-// Currently filled with test data
-var pilots = [
-    {id:"1", f_name:"Jon", l_name:"Doe"}, 
-    {id:"2", f_name:"Jack", l_name:"Blorb"},
-    {id:"3", f_name:"Maggy", l_name:"Sue"}
-];
-/*var flights = [
-    {id:"43", completed:"false", aircraft_id:"3", pilot_id:"1", zone_id:"2", started:"false"},
-    {id:"44", completed:"true", aircraft_id:"2", pilot_id:"3", zone_id:"1", started:"true"}
-];*/
+var pilots = [];
 
 var host = "http://code-a-thon.xellitix.com:8080";
 
 $(document).ready(function(){
     //Check for new data every second
     setInterval(function(){
-        $("#flightList").empty();
-
-        
-        
-        
-        
-        
         
         //Get all of the pilots
-        /*var url = "/api/pilot"
-        $.getJSON(host + url, function(rData) { 
-            rData.foreach(function(pilot){
-                pilots.push(pilot);
+        var url = "/api/pilots";
+        $.getJSON(host + url, function(rData) {
+            var newPilots = [];
+            $(rData).each(function(index, pilot){
+                newPilots.push(pilot);
             });
-        });*/
+            pilots = newPilots;
+        });
 
-        //When new planes have been assigned
-        var url = "/api/flights"
+        //URL query for flights that have not started
+        var url = "/api/flights?started=false&completed=false";
         $.getJSON(host + url, function(rData) { 
+            
+            var flightDivs = "";
             
             $(rData).each(function(index, flight){
-                // Convert the flight.started string to a boolean
-                var started = (flight.started == 'true');
-                // If the flight hasn't started
-                if(!started){
-                    //Get pilot name of that flight
-                    console.log( getPilotName(flight.pilot_id) );
-                    var name = getPilotName(flight.pilot_id);
-                    //Add the flight to the waiting room board
-                    $("#flightList").append('<div class="listItem"><p>' + name + ' can now fly Aircraft ' + flight.aircraft_id + '</p></div>');
-                }
+                //Get pilot name of that flight
+                var name = getPilotName(flight.pilotId);
+                //Add the flight to the waiting room board
+                flightDivs += ('<div class="listItem" data-id=""><p>' + name + ' can now fly Aircraft ' + flight.aircraftId + '</p></div>');
             });
             
-            /*data.foreach(function(flight){
-                if(!flight.started){
-                    //Get pilot name of that flight
-                    var name = getPilotName(flight.pilot_id);
-
-                    //Add the flight to the waiting room board
-                    $("#flightList").append('<div class="listItem"><p>' + name + ' can now fly Aircraft ' + flight.aircraft_id + '</p></div>');
-                }
-            });*/
+            // Set the flightList div html equal to the generated flightDivs string
+            $("#flightList").html(flightDivs);
             
         });
     }, 1000);
@@ -64,12 +39,31 @@ $(document).ready(function(){
     
 });
 
+// Precondition: The pilots array has been filled with pilot data
+// Postcondition: Returns the name of the pilot with the given pilotId
 function getPilotName(id){
     for (var i = 0; i < pilots.length; i++) {
         if(pilots[i].id == id){
-            return pilots[i].f_name + " " + pilots[i].l_name;
+            return pilots[i].firstName + " " + pilots[i].lastName;
         }
     }
-    // Default return case reached if the pilot was not returned by the query of the database
+    // Default return case, reached if the pilot with given id was not found in pilots array
     return "Unknown Pilot";
 }
+
+// CURRENTLY UNUSED/UNFINISHED FUNCTION
+// Returns true if arr1 and arr2 contain identical JSON data
+// Time Complexity: arr1.length * arr2.length (roughly N^2)
+/*function areEqualJSONArrays(arr1, arr2) {
+    // If the arrays are of different length, not equal
+    if (arr1.length !== arr2.length)
+        return false;
+    
+    for (var i = 0; i < arr1.length; i++) {
+        // if this JSON object's key number doesn't match the same object in arr2, not equal
+        if (Object.keys(arr1[i]).length !== Object.keys(arr2[i]).length)
+            return false;
+        
+        // For
+    }
+}*/
