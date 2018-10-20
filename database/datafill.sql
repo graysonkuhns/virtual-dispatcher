@@ -39,7 +39,7 @@ INSERT INTO availability
 INSERT INTO flights (started, completed, pilot_id, aircraft_id, zone_id)
 	VALUES
 		(true, true, 2, 4, 2),
-		(true, true, 1, 6, 3),
-		(true, true, 3, 2, 1),
+		(true, false, 1, 6, 3),
+		(true, true, 5, 2, 1),
 		(false, false, 3, 1, 1),
 		(false, false, 4, 2, 1);
