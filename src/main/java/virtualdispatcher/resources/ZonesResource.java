@@ -14,13 +14,13 @@ import virtualdispatcher.db.dao.ZoneDAO;
 @Singleton
 @Path("/api/zones")
 @Produces(MediaType.APPLICATION_JSON)
-public class ZoneResource implements Resource {
+public class ZonesResource implements Resource {
 
   // Dependencies
   private final ZoneDAO zoneDAO;
 
   @Inject
-  ZoneResource(final ZoneDAO zoneDAO) {
+  ZonesResource(final ZoneDAO zoneDAO) {
     this.zoneDAO = zoneDAO;
   }
 
