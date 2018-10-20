@@ -1,15 +1,9 @@
 
-var planes = [
-    {"id":"1", "status":"Available"}, 
-    {"id":"2", "status":"In Flight"},
-    {"id":"3", "status":"In Flight"}
-]
+var planes = []
 
-var waitingPilots = [
-    {"name":"Joe", "checkinTime":"22:00:12"}, 
-    {"name":"Bob", "checkinTime":"22:20:00"},
-    {"name":"Tim", "checkinTime":"22:40:00"}
-]
+var waitingPilots = []
+
+var host = "http://code-a-thon.xellitix.com:8080";
 
 window.addEventListener("load", start, false);
 
@@ -19,24 +13,48 @@ function start(){
 }
 
 function loadPlanes(){
-    var planeList = document.getElementById("planeInfo");
-    planes.forEach(function(plane){
-        if(plane.status == "Available"){
-            planeList.innerHTML += '<div class="plane availablePlane">Plane ' + plane.id + ' <br><p class="detailInfo">Available</p></div>';
-        } else {
-            planeList.innerHTML += '<div class="plane">Plane ' + plane.id + ' <br><p class="detailInfo">Jon Smith Zone 6 Due back: 2:00 PM (17 Mins)</p></div>';
-        }
-        
+    var url = host + "/api/aircraft"; 
+    $.getJSON(url, function(data) {
+        planes = data;
     });
+
+    setInterval(function(){
+        var aircraftList = "";
+
+        planes.forEach(function(plane) {
+            var url = host + "/api/flights?aircraftId=" + plane.id + "&completed=false"; 
+            $.getJSON(url, function(flight) {
+                if(flight.length > 0){
+                    planes.push(flight[0]);
+                    aircraftList += '<div class="plane" data-id="' + plane.id + '">Plane ' + plane.id + ' <br><p class="detailInfo">Jon Smith Zone 6 Due back: 2:00 PM (17 Mins)</p></div>';
+                } else {
+                    aircraftList += '<div class="plane availablePlane" data-id="' + plane.id + '">Plane ' + plane.id + ' <br><p class="detailInfo">Available</p></div>';
+                }
+            });
+        });
+
+        //Set the planes list html
+        $("#planesList").html(aircraftList);
+    }, 1000);
 }
 
 function loadWaitingList(){
-    var watingList = document.getElementById("waitingList");
-    waitingPilots.forEach(function(pilot){
-        var timeDiff = getTimeDiff(pilot.checkinTime);        
+    setInterval(function(){
+        var url = host + "/api/availablility"; 
+        $.getJSON(url, function(data) {
+            waitingPilots = data;
+        });
 
-        watingList.innerHTML += '<div class="waitingPilot">' + pilot.name + '<br><p class="detailInfo">Has been waiting for '+timeDiff+'</p></div>';
-    });
+        var waitList = "";
+
+        waitingPilots.forEach(function(pilot){
+            var timeDiff = getTimeDiff(pilot.checkinTime);        
+
+            waitList += '<div class="waitingPilot">' + pilot.name + '<br><p class="detailInfo">Has been waiting for '+ timeDiff + '</p></div>';
+        });
+        
+        $("#pilotList").html(waitList);
+    }, 1000);
 }
 
 function getTimeDiff(oldTime){
