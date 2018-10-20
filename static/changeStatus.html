@@ -3,28 +3,41 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
         <link rel="stylesheet" type="text/css" href="css/statusStyle.css">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/flightStatusScript.js"></script>
     </head>
     <body>
         <div id="header">
             <h1 id="headerText">Flight Status</h1>
         </div>
 
-        <div id="flightInfo">
-            <p class="infoItem">Joe Smith</p>
-            <p class="infoItem" id="flightNumber">Flight #: 45</p>
-            <p class="infoItem">Status: Awaiting takoff</p>
+        <div id="loginView" class="hidden">
+            <form id="loginForm" action="#" autocomplete="off" method="POST">
+                Pilot Name:
+                <input type="text" name="name" id="name">
+                <div id="searchList"></div>
+                <input type="submit" value="Login">
+            </form>
         </div>
 
-        <div id="options">
-            <div class="statusOption">
-                <a href="#">Flight started</a>
+        <div id="flightView" class="hidden">
+            <div id="flightInfo">
+                <p class="infoItem" id="pilotName"></p>
+                <p class="infoItem" id="flightNumber"></p>
+                <p class="infoItem" id="aircraftNumber"></p>
+                <p class="infoItem" id="status"></p>
             </div>
-            <div class="statusOption">
-                <a href="#">Flight finished</a>
-            </div>
-            <div class="statusOption">
-                <a href="#">Needs maintenance</a>
+
+            <div id="options">
+                <div class="statusOption">
+                    <a href="#">Flight started</a>
+                </div>
+                <div class="statusOption">
+                    <a href="#">Flight finished</a>
+                </div>
+                <div class="statusOption">
+                    <a href="#">Needs maintenance</a>
+                </div>
             </div>
         </div>
     </body>

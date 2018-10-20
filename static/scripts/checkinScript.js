@@ -1,7 +1,5 @@
 var pilots = [];
 
-var availablilty = [];
-
 var host = "http://code-a-thon.xellitix.com:8080";
 
 $(document).ready(function(){
@@ -67,15 +65,16 @@ $(document).ready(function(){
         var type = $("#checkin").attr("name");
 
         if(type == "checkin"){
-            //Check in post request
-            availablilty.push(pilot_id);
-
             $.ajax({
                 type: 'POST',
-                url: host + '/api/availablities',
-                data: {
-                    id: pilot_id
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json' 
                 },
+                url: host + '/api/availability',
+                data: JSON.stringify({
+                    pilotId: pilot_id
+                }),
                 success:function(){
                     var good = true;
                     //Test if good message
@@ -102,15 +101,16 @@ $(document).ready(function(){
                 }
             });
         } else {
-            //Check out delete request
-            remove(pilot_id);
-
             $.ajax({
                 type: 'DELETE',
-                url: host + '/api/availablities',
-                data: {
-                    id: pilot_id
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json' 
                 },
+                url: host + '/api/availability',
+                data: JSON.stringify({
+                    pilotId: pilot_id
+                }),
                 success:function(){
                     var good = true;
                     //Test if good message
@@ -142,32 +142,23 @@ $(document).ready(function(){
 });
 
 function setAction(id){
-    var action = getAction(id);
-    $("#checkin").attr("name", action);
-
-    if(action == "checkin"){
-        $("#checkin").val("Check In");
-    } else {
-        $("#checkin").val("Check Out");
-    }
-
-    $("#checkin").attr("disabled", false);
-}
-
-function getAction(id){
-    for(let pilot of availablilty){
-        if(pilot == id){
-            return "checkout";
+    var url = host + "/api/availability"
+    $.getJSON(url, function(availablilty) {
+        var action = "checkin";
+        for(let pilot of availablilty){
+            if(pilot.pilotId == id){
+                action = "checkout";
+            }
         }
-    }
 
-    return "checkin";
-}
+        $("#checkin").attr("name", action);
 
-function remove(val){
-    var index = availablilty.indexOf(val);
- 
-    if (index > -1) {
-       availablilty.splice(index, 1);
-    }
+        if(action == "checkin"){
+            $("#checkin").val("Check In");
+        } else {
+            $("#checkin").val("Check Out");
+        }
+
+        $("#checkin").attr("disabled", false);
+    }); 
 }

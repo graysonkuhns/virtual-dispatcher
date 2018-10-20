@@ -8,8 +8,10 @@ p, h1 {
 
 .visible {
     visibility: visible;
+    display: block;
 }
 
 .hidden {
     visibility: hidden;
+    display: none;
 }
