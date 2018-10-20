@@ -1,0 +1,50 @@
+body {
+    background-color: grey;
+}
+
+#planeInfo {
+    float: left;
+    padding: 10px;
+    width: 40%;
+}
+
+#waitingList {
+    float: right;
+    padding: 10px;
+    width: 40%;
+    padding-right: 20px;
+}
+
+.plane {
+    margin-bottom: 10px;
+    font-size: 60px;
+    background-color: rgb(255, 65, 65);
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.waitingPilot {
+    margin-bottom: 10px;
+    font-size: 60px;
+    background-color: rgb(88, 88, 88);
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.detailInfo{
+    font-size: 20px;
+}
+
+.availablePlane {
+    background-color: rgb(38, 143, 38);
+}
+
+.header {
+    font-size: 60px;
+    margin: 0;
+    text-align: center;
+}

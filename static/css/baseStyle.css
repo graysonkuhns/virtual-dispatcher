@@ -1,0 +1,7 @@
+body {
+    background-color: grey;
+}
+
+p, h1 {
+    margin: 0;
+}
