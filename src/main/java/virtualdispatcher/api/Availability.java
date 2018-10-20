@@ -1,6 +1,7 @@
 package virtualdispatcher.api;
 
 import java.time.Instant;
+import org.jdbi.v3.core.argument.Argument;
 
 /**
  * Availability model.

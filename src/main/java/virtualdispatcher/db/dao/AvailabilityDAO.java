@@ -38,6 +38,18 @@ public class AvailabilityDAO {
     }
 
     /**
+     * Creates an {@link Availability}.
+     *
+     * @param pilotId The pilot ID.
+     */
+    public void create(final int pilotId) {
+        jdbi.useHandle(handle -> handle
+            .createUpdate("INSERT INTO availability (pilot_id) VALUES (:pilot_id)")
+            .bind("pilot_id", pilotId)
+            .execute());
+    }
+
+    /**
      * List availabilities.
      *
      * @return The availabilities.
