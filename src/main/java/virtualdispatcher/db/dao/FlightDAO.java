@@ -3,6 +3,7 @@ package virtualdispatcher.db.dao;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.mapper.RowMappers;
 import virtualdispatcher.api.Flight;
@@ -36,15 +37,23 @@ public class FlightDAO {
     }
   }
 
+  public List<Flight> list() {
+    return list(null, null);
+  }
+
   /**
    * List flights.
    *
    * @return The flights.
    */
-  public List<Flight> list() {
+  public List<Flight> list(final Boolean completed, final Boolean started) {
     return jdbi.withHandle(handle -> handle
         .createQuery("SELECT * FROM flights")
         .mapTo(Flight.class)
-        .list());
+        .list()
+        .stream()
+        .filter(flight -> completed == null || flight.isCompleted() == completed)
+        .filter(flight -> started == null || flight.isStarted() == started)
+        .collect(Collectors.toList()));
   }
 }

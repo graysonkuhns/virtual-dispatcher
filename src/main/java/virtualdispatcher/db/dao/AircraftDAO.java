@@ -29,10 +29,10 @@ public class AircraftDAO {
   }
 
   public List<Aircraft> list() {
-    return list(null, null);
+    return list(null);
   }
 
-  public List<Aircraft> list(final Boolean operational, final List<Integer> blacklist) {
+  public List<Aircraft> list(final Boolean operational) {
     List<Aircraft> aircraft = jdbi.withHandle(handle -> handle
       .createQuery("SELECT * FROM aircraft")
       .mapTo(Aircraft.class)
@@ -41,7 +41,6 @@ public class AircraftDAO {
     return aircraft
         .stream()
         .filter(craft -> operational == null || craft.isOperational() == operational)
-        .filter(craft -> blacklist == null || !blacklist.contains(craft.getId()))
         .collect(Collectors.toList());
   }
 }

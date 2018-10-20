@@ -39,9 +39,6 @@ public class PilotQueue {
               .orElseThrow(() -> new RuntimeException("Pilot not found matching availability record")))
         .findFirst();
 
-    // Remove the pilot from the queue
-    nextPilot.ifPresent(availabilityDAO::delete);
-
     return nextPilot;
   }
 }

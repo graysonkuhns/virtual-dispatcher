@@ -40,11 +40,9 @@ public class FlightsResource implements Resource {
       @QueryParam("started") final Boolean started) {
 
     return flightDAO
-        .list()
+        .list(completed, started)
         .stream()
         .filter(flight -> aircraftId == null || flight.getAircraftId() == aircraftId)
-        .filter(flight -> completed == null || flight.isCompleted() == completed)
-        .filter(flight -> started == null || flight.isStarted() == started)
         .collect(Collectors.toList());
   }
 }
