@@ -1,5 +1,7 @@
-body {
-    background-color: grey;
+.header {
+    font-size: 60px;
+    margin: 0;
+    text-align: center;
 }
 
 #planeInfo {
@@ -18,7 +20,6 @@ body {
 .plane {
     margin-bottom: 10px;
     font-size: 60px;
-    background-color: rgb(255, 65, 65);
     padding: 5px;
     border-radius: 10px;
     text-align: center;
@@ -39,12 +40,14 @@ body {
     font-size: 20px;
 }
 
+.inUsePlane {
+    background-color: rgb(253, 242, 83);
+}
+
 .availablePlane {
     background-color: rgb(38, 143, 38);
 }
 
-.header {
-    font-size: 60px;
-    margin: 0;
-    text-align: center;
+.maintenancePlane {
+    background-color: rgb(255, 65, 65);
 }

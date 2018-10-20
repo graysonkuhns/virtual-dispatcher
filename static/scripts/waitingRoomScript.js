@@ -26,7 +26,7 @@ $(document).ready(function(){
                 //Get pilot name of that flight
                 var name = getPilotName(flight.pilotId);
                 //Add the flight to the waiting room board
-                flightDivs += ('<div class="listItem" data-id=""><p>' + name + ' can now fly Aircraft ' + flight.aircraftId + '</p></div>');
+                flightDivs += ('<div class="listItem" data-id=""><p>' + name + ' can now fly Aircraft ' + flight.aircraftId + ' in zone 1</p></div>');
             });
             
             // Set the flightList div html equal to the generated flightDivs string
