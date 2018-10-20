@@ -37,7 +37,7 @@ public class AvailabilityMapper implements RowMapper<Availability> {
     @Override
     public Availability map(final ResultSet rs, final StatementContext ctx) throws SQLException {
         return availabilityFactory.create(
-                rs.getTimestamp(KEY_CREATED).toInstant(),
-                rs.getInt(KEY_PILOT_ID));
+            rs.getInt(KEY_PILOT_ID),
+            rs.getTimestamp(KEY_CREATED).toInstant());
     }
 }

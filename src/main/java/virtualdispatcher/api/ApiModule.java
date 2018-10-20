@@ -26,5 +26,9 @@ public class ApiModule extends AbstractModule {
     install(new FactoryModuleBuilder()
             .implement(Zone.class, DefaultZone.class)
             .build(ZoneFactory.class));
+
+    install(new FactoryModuleBuilder()
+      .implement(Availability.class, DefaultAvailability.class)
+      .build(AvailabilityFactory.class));
   }
 }

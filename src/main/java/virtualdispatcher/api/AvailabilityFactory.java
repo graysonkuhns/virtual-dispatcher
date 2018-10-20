@@ -14,12 +14,12 @@ public interface AvailabilityFactory {
     /**
      * Creates a {@link Availability}.
      *
-     * @param created The timestamp of time created.
      * @param pilotId The pilot ID.
+     * @param timeCreated The timestamp of time created.
      *
      * @return The {@link Availability}.
      */
     Availability create(
-            @Assisted("created") Instant created,
-            @Assisted("pilotId") int pilotId);
+            @Assisted("pilotId") int pilotId,
+            @Assisted("timeCreated") Instant timeCreated);
 }

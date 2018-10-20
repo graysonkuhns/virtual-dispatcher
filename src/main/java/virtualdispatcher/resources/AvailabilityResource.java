@@ -35,7 +35,6 @@ public class AvailabilityResource implements Resource {
   @GET
   @Timed
   public List<Availability> getAvailability() {
-
     return availabilityDAO.list();
   }
 }

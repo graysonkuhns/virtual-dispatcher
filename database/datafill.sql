@@ -30,7 +30,7 @@ INSERT INTO zones
 		(),
 		();
 	
-INSERT INTO avaliability
+INSERT INTO availability
 	VALUES
 		(2, TIME_FORMAT("11:02:12", "%T")),
 		(1, TIME_FORMAT("10:33:00", "%T")),

@@ -27,7 +27,7 @@ CREATE TABLE zones (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE avaliability (
+CREATE TABLE availability (
 	pilot_id SMALLINT UNSIGNED NOT NULL UNIQUE,
 	created TIME NOT NULL,
 	PRIMARY KEY (pilot_id)
@@ -45,7 +45,7 @@ CREATE TABLE flights (
 
 # ADD FOREIGN KEY CONSTRAINTS
 
-ALTER TABLE avaliability
+ALTER TABLE availability
 	ADD FOREIGN KEY (pilot_id)
 	REFERENCES pilot (id)
 	ON DELETE CASCADE;
