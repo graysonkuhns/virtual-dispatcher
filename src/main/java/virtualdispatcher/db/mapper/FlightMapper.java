@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import org.jdbi.v3.core.mapper.RowMapper;
 import org.jdbi.v3.core.statement.StatementContext;
 import virtualdispatcher.api.Flight;
+import virtualdispatcher.api.FlightFactory;
 
 /**
  * {@link Flight} mapper.
@@ -24,15 +25,15 @@ public class FlightMapper implements RowMapper<Flight> {
   private static final String KEY_ZONE_ID = "zone_id";
 
   // Dependencies
-  private final FlightFactory.FlightFactory flightFactory;
+  private final FlightFactory flightFactory;
 
   /**
    * Constructor.
    *
-   * @param flightFactory The {@link FlightFactory.FlightFactory}.
+   * @param flightFactory The {@link FlightFactory}.
    */
   @Inject
-  FlightMapper(final FlightFactory.FlightFactory flightFactory) {
+  FlightMapper(final FlightFactory flightFactory) {
     this.flightFactory = flightFactory;
   }
 
