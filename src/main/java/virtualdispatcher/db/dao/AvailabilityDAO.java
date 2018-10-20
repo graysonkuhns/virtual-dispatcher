@@ -5,6 +5,7 @@ import java.util.List;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.mapper.RowMappers;
 import virtualdispatcher.api.Availability;
+import virtualdispatcher.api.Pilot;
 import virtualdispatcher.db.mapper.AvailabilityMapper;
 
 /**
@@ -47,6 +48,15 @@ public class AvailabilityDAO {
             .createUpdate("INSERT INTO availability (pilot_id) VALUES (:pilot_id)")
             .bind("pilot_id", pilotId)
             .execute());
+    }
+
+    /**
+     * Deletes an availability for a pilot.
+     *
+     * @param pilot The pilot.
+     */
+    public void delete(final Pilot pilot) {
+        delete(pilot.getId());
     }
 
     /**

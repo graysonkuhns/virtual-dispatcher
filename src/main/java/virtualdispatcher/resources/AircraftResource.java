@@ -28,7 +28,6 @@ public class AircraftResource implements Resource {
   @GET
   @Timed
   public List<Aircraft> getAircraft(@QueryParam("operational") final Boolean operational) {
-
     return aircraftDAO.list(operational, null);
   }
 }

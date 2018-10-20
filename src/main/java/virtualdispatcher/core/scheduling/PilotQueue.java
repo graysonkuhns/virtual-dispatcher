@@ -1,12 +1,14 @@
 package virtualdispatcher.core.scheduling;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import java.util.List;
 import java.util.Optional;
 import virtualdispatcher.api.Pilot;
 import virtualdispatcher.db.dao.AvailabilityDAO;
 import virtualdispatcher.db.dao.PilotDAO;
 
+@Singleton
 public class PilotQueue {
 
   // Dependencies
@@ -25,7 +27,8 @@ public class PilotQueue {
   public Optional<Pilot> getNextPilot() {
     List<Pilot> pilots = pilotDAO.list();
 
-    return availabilityDAO
+    // Find the next pilot
+    Optional<Pilot> nextPilot = availabilityDAO
         .list()
         .stream()
         .sorted()
@@ -35,5 +38,10 @@ public class PilotQueue {
               .findFirst()
               .orElseThrow(() -> new RuntimeException("Pilot not found matching availability record")))
         .findFirst();
+
+    // Remove the pilot from the queue
+    nextPilot.ifPresent(availabilityDAO::delete);
+
+    return nextPilot;
   }
 }
