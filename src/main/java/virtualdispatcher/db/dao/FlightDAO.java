@@ -42,6 +42,9 @@ public class FlightDAO {
    * @return The flights.
    */
   public List<Flight> list() {
-    return null;
+    return jdbi.withHandle(handle -> handle
+        .createQuery("SELECT * FROM flights")
+        .mapTo(Flight.class)
+        .list());
   }
 }
