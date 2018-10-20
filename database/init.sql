@@ -5,6 +5,10 @@ DROP DATABASE IF EXISTS vd_db;
 CREATE DATABASE vd_db;
 USE vd_db;
 
+# Create the service account and grant it admin permissions on the database
+CREATE OR REPLACE USER `dispatcher`@`%` IDENTIFIED BY 'dispatcher';
+GRANT ALL PRIVILEGES ON vd_db.* TO `dispatcher`@`%` WITH GRANT OPTION;
+
 CREATE TABLE pilot (
 	id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
 	f_name VARCHAR(30) NOT NULL,
