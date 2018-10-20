@@ -22,6 +22,13 @@ public interface Flight {
   boolean isCompleted();
 
   /**
+   * Checks if the flight has been started.
+   *
+   * @return True if the flight has been started.
+   */
+  boolean isStarted();
+
+  /**
    * Gets the pilot ID.
    *
    * @return The pilot ID.
