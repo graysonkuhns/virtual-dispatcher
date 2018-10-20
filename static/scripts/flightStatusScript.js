@@ -91,7 +91,11 @@ $(document).ready(function(){
         });
 
         $("#pilotName").html(pilotName);
-        $("#flightNumber").html("Flight# " + )
+        $("#flightNumber").html("Flight# " + currentFlight.id);
+        $("#aircraftNumber").html("Plane " + currentFlight.aircraftId);
+
+        if(currentFlight.started)
+
         setInterval(function(){
             $("#pilotName").html(pilotName);
         }, 1000);

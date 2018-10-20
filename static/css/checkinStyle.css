@@ -1,78 +1,67 @@
+.middleDiv {
+    display: block;
+    
+    /* Border For Debug Purposes */
+    /* border: 3px solid red; */
+    margin: auto;
+    margin-top: 15vh;
+    width: 50%;
+    min-width: 300px;
+}
+
 #header {
+    text-align: right;
+    
+    position: relative;
     width: 100%;
-    text-align: center;
+}
+
+.logo {
+    width:100%;
 }
 
 #headerText {
-    font-size: 60px;
+    font-size: 3vw;
+    color: var(--gold-text);
+    
+    position: absolute;
+    bottom: 6px;
+    width:100%;
+}
+
+#formFields {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 form {
     text-align: center;
-    width: 70%;
+    
     margin: auto;
-    margin-top: 20px;
-}
-
-#nameText {
-    font-size: 45px;
-    padding: 7px;
-    display: inline;
-}
-
-#name {
-    width: 35%;
+    position: relative;
 }
 
 input {
-    font-size: 40px;
-    padding: 7px;
+    font-size: 2.5vw;
+    text-align: center;
+    
+    padding-top: 7px;
+    padding-bottom: 7px;
     border-radius: 5px;
     border: 0;
-    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
 }
 
 #checkin {
-    width: 50%;
+    color: var(--gold-text);
+    background-color: var(--red-bg);
+    
     display: block;
-    margin: auto;
-    margin-top: 40px;
 }
 
 #checkin:hover {
-    cursor: pointer;
-}
-
-.message {
-    text-align: center;
-    margin-top: 100px;
-    font-size: 40px;
-}
-
-#goodMessage {
-    color: rgb(29, 126, 29);
-}
-
-#badMessage {
-    color: rgb(255, 65, 65);
-}
-
-#searchList {
-    position: absolute;
-    left: 44%;
-    background-color: rgb(255, 255, 255);
-    margin-top: 5px;
-    border-radius: 10px;
-}
-
-.searchItem {
-    padding: 5px 30px;
-    margin: 10px 10px;
-    font-size: 30px;
-    border-radius: 10px;
-}
-
-.searchItem:hover {
-    background-color: rgb(165, 165, 165);
+    background-color: var(--red-bg-hover);
     cursor: pointer;
 }
