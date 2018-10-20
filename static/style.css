@@ -1,0 +1,62 @@
+body {
+    background-color: grey;
+}
+
+a {
+    text-decoration-line: none;
+    color: black;
+    font-size: 40px;
+}
+
+#header {
+    width: 100%;
+}
+
+#headerText {
+    text-align: center;
+    font-size: 40px;
+    margin: 0px;
+}
+
+#options {
+    background-color: rgb(165, 165, 165);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.statusOption {
+    margin: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    background-color: rgb(252, 94, 94);
+    border-radius: 10px;
+}
+
+.statusOption:hover {
+    background-color:  rgb(199, 72, 72);
+}
+
+#flightInfo {
+    background-color: rgb(165, 165, 165);
+    border-radius: 5px;
+}
+
+#flightNumber {
+    float: right;
+}
+
+.infoItem {
+    font-size: 16px;
+    padding: 5px;
+    margin: 0;
+}
+
+form {
+    font-size: 20px;
+}
+
+form input {
+    font-size: 20px;
+}
