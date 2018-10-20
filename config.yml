@@ -2,3 +2,9 @@ logging:
   level: INFO
   loggers:
     edu.ucm.flight: DEBUG
+
+database:
+  driverClass: org.mariadb.jdbc.Driver
+  user: dispatcher
+  password: dispatcher
+  url: jdbc:mariadb://127.0.0.1:3306/vd_db
