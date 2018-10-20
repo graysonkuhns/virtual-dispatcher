@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import virtualdispatcher.api.Aircraft;
 import virtualdispatcher.db.dao.AircraftDAO;
@@ -26,7 +27,8 @@ public class AircraftResource implements Resource {
 
   @GET
   @Timed
-  public List<Aircraft> getAircraft() {
-    return aircraftDAO.list();
+  public List<Aircraft> getAircraft(@QueryParam("operational") final Boolean operational) {
+
+    return aircraftDAO.list(operational, null);
   }
 }
