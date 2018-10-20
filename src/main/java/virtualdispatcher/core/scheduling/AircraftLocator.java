@@ -28,7 +28,7 @@ public class AircraftLocator {
     List<Integer> activeFlights = flightDAO
         .list(false, null)
         .stream()
-        .map(Flight::getId)
+        .map(Flight::getAircraftId)
         .collect(Collectors.toList());
 
     return aircraftDAO
