@@ -26,4 +26,5 @@ public interface FlightFactory {
       @Assisted("pilotId") int pilotId,
       @Assisted("aircraftId") int aircraftId,
       @Assisted("zoneId") int zoneId);
+
 }
