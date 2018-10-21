@@ -13,7 +13,7 @@
     float: right;
     padding: 10px;
     width: 40%;
-    padding-right: 20px;
+    padding-right: 10px;
     border-radius: 30px;
 }
 
@@ -50,26 +50,21 @@
     display:flex;
     flex-direction:row;
     align-items:center;
-    height: 33%;
+    height: 30%;
+    margin: 2px;
 }
 
-.pilotImg {
-    height: 100%;
-    width: auto;
+.infoImg {
+    height:100%;
+    width:auto;
 }
 
 .infoText {
     font-size:3vh;
 }
 
-.zoneImg {
-    height: 100%;
-    width: auto;
-}
-
-.maintenanceImg {
-    height: 100%;
-    width: auto;
+.bigInfoText {
+    font-size:5vh;
 }
 
 #maintenance {
@@ -129,6 +124,7 @@
     align-items:center;
     height: 10vh;
     width: 100%;
+    min-width:180px;
     border: 4px solid black;
     border-radius: 10px;
     position: relative;
@@ -145,5 +141,14 @@
     display:flex;
     flex-direction:row;
     align-items:center;
-    height: 33%;
+    height: 30%;
+    margin: 2px;
+}
+
+.pilotInfoBoxBig {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    height: 55%;
+    margin: 2px;
 }
