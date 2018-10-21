@@ -40,22 +40,31 @@ public class FlightScheduler {
   }
 
   public void scheduleFlights() {
+    boolean cont = true;
     Optional<Pilot> pilot = pilotQueue.getNextPilot();
-    if (!pilot.isPresent()) {
-      // No one is ready to fly
-      return;
-    }
 
+    while (pilot.isPresent() && cont) {
+      // Schedule a flight for the pilot
+      cont = scheduleFlightFor(pilot.get());
+
+      // Look for another pilot
+      if (cont) {
+        pilot = pilotQueue.getNextPilot();
+      }
+    }
+  }
+
+  private boolean scheduleFlightFor(final Pilot pilot) {
     Optional<Aircraft> aircraft = aircraftLocator.getNextAvailableAircraft();
     if (!aircraft.isPresent()) {
       // No aircraft are available
-      return;
+      return false;
     }
 
     Optional<Zone> zone = zoneLocator.getAvailableZone();
     if (!zone.isPresent()) {
       // We can't fly anywhere
-      return;
+      return false;
     }
 
     // We can schedule the flight
@@ -63,12 +72,15 @@ public class FlightScheduler {
         null,
         false,
         false,
-        pilot.get().getId(),
+        pilot.getId(),
         aircraft.get().getId(),
         zone.get().getId());
     flightDAO.create(flight);
 
     // Remove the pilot from the waiting queue
-    availabilityDAO.delete(pilot.get());
+    availabilityDAO.delete(pilot);
+
+    // A flight was scheduled
+    return true;
   }
 }
