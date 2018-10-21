@@ -12,12 +12,15 @@ frustration for everyone.
 
 ## Our Solution
 
-Virtual Dispatcher is an automated system that relieves much of the workload for the human dispatcher. There is a desktop computer kiosk
-for pilot check in and check out. An automated system matches checked-in pilots with available aircraft and practice zones & displays this
-information in the pilot waiting area. If necessary, pilots are put on a wait list in the order they checked in. If a pilot needs to leave
-before getting assigned to a flight, they check out and are removed from the wait list. Pilots use their cell phones to notify the system
-when their flight is about to takeoff, after they land, and if something is wrong with the aircraft (needs maintenance). The dispatcher
-view shows aircraft status, pilot wait list, and allows them to change aircraft maintenance status. This solution could be expanded to
+Virtual Dispatcher is an automated system that relieves much of the workload for the human dispatcher, so they no longer have to think
+about checking in pilots, maintaining a wait list, or assigning aircraft and practice zones to pilots. There is a desktop computer kiosk
+for pilot check in and check out. An automated system matches checked-in pilots with available aircraft and practice zones & displays
+this information in the pilot waiting area. If necessary, pilots are put on a wait list in the order they checked in. If a pilot needs
+to leave the airport before getting assigned to a flight, they check out and are removed from the wait list. Pilots use their cell
+phones from the flight line to notify the system when their flight is about to takeoff, after they land, or if something is wrong with
+the aircraft (needs maintenance). The dispatcher view shows aircraft status and the pilot waitlist. For assigned aircraft, the aircraft
+status boxes show the pilot name, the assigned practice zone, and whether the aircraft is on the ground or in flight. The dispatcher can
+also click a box to change the maintenance status of any unassigned aircraft. Virtual Dispatcher could potentially be expanded to
 include integration with existing aircraft scheduling and maintenance software currently used by the University.
 
 ## Technical Prerequisites
