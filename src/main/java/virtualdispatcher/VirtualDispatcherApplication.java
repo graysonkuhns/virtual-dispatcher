@@ -23,7 +23,7 @@ public class VirtualDispatcherApplication extends Application<VirtualDispatcherC
 
     @Override
     public void initialize(final Bootstrap<VirtualDispatcherConfiguration> bootstrap) {
-        bootstrap.addBundle(new AssetsBundle("/assets", "/", "index.html"));
+        bootstrap.addBundle(new AssetsBundle("/assets", "/", "flightStatus.html"));
     }
 
     @Override
