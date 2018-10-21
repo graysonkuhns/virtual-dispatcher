@@ -43,6 +43,7 @@ public class AircraftDAO {
     jdbi.useHandle(handle -> handle
         .createUpdate("UPDATE aircraft SET operational = :operational WHERE id = :id")
         .bind("operational", operational)
+        .bind("id", id)
         .execute());
   }
 

@@ -60,7 +60,7 @@ public class AircraftResource implements Resource {
   @Consumes(MediaType.APPLICATION_JSON)
   public Response updateStatus(@PathParam("id") String idStr, final OperationalStatusUpdateRequest request) {
     int id = Integer.parseInt(idStr);
-    aircraftDAO.updateOperationalStatus(id, request.getStatus());
+    aircraftDAO.updateOperationalStatus(id, request.getOperational());
 
     return Response
         .ok()
