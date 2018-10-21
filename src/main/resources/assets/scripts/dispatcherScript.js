@@ -7,7 +7,6 @@ window.addEventListener("load", start, false);
 
 function start(){
     loadPlanes();
-    
     loadWaitingList();
 }
 
@@ -29,7 +28,7 @@ function loadPlanes(){
         if($(this).is(':checked')){
             //Maintenance mode is now on
             var newPlane = '<div class = "plane"><div class="planeBox">';
-            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">Maintenance</div>';
             newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + planeId + '" checked></form></div></div>';
             newPlane += '<img class="tailBottom" src="images/tail_maintenance.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + planeId + '</div></div>';
             aircraftList[planeId - 1] = newPlane;
@@ -56,7 +55,7 @@ function loadPlanes(){
         } else {
             //Maintenance mode is now off
             var newPlane = '<div class = "plane"><div class="planeBox">';
-            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">Maintenance</div>';
             newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + planeId + '"></form></div></div>';
             newPlane += '<img class="tailBottom" src="images/tail_available.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + planeId + '</div></div>';
             aircraftList[planeId - 1] = newPlane;
@@ -207,7 +206,7 @@ function planeLoader(){
                             newPlane += '<div class="planeInfoBox"><img class="infoImg" src="images/zone.png"/><div class="infoText" id="zone">Zone ' + flight[0].zoneId + '</div></div>';
                         } else {
                             newPlane += '<div class="planeInfoBox';
-                            newPlane += '" id="maintenanceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+                            newPlane += '" id="maintenanceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">Maintenance</div>';
                             newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + plane.id + '"></form></div>';
                         }
 
@@ -259,3 +258,23 @@ function planeLoader(){
         });
     });
 }
+
+$(document).ready(function(){
+    $("#toolTipTable").hide();
+    $("#toolTipTable").removeClass("hidden");
+
+    $("#toolTipImg").on("mouseenter", function(){
+        $("#toolTipTable").fadeIn("fast");
+    });
+
+    $("#toolTipTable").on("mouseleave", function(){
+        $("#toolTipTable").fadeOut("fast");
+    });
+
+    $("#toolTipImg").on("mouseleave", function(event){
+        //Dont hide if leaving up
+        if(event.pageY > $("#toolTipImg").offset().top){
+            $("#toolTipTable").fadeOut("fast");
+        }
+    });
+});
