@@ -152,3 +152,17 @@
     height: 55%;
     margin: 2px;
 }
+
+/* Tool Tip */
+
+#toolTip {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#toolTipImg {
+    width: 10%;
+    height: auto;
+}
