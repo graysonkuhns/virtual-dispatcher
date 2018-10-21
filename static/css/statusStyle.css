@@ -42,7 +42,7 @@ form {
 }
 
 input {
-    font-size: 2.5vw;
+    font-size: 4vh;
     text-align: center;
     
     padding-top: 7px;
@@ -81,7 +81,7 @@ input {
     color: var(--gold-text);
     background-color: var(--red-bg);
     border-radius: 10px;
-    font-size: 2.5vw;
+    font-size: 5vh;
 }
 
 .statusOption:hover {
@@ -95,12 +95,17 @@ input {
 }
 
 #flightNumber {
-    font-size: 5vw;
+    font-size: 3vh;
     float: right;
 }
 
 .infoItem {
-    font-size: 2vw;
+    font-size: 3vh;
     padding: 5px;
     margin: 0;
+}
+
+#pilotName {
+    text-align: center;
+    font-size: 4vh;
 }

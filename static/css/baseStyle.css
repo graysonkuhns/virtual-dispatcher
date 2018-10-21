@@ -61,7 +61,7 @@ p, h1 {
 }
 
 .searchItem {
-    font-size: 2.5vw;
+    font-size: 4vh;
     color: var(--black-text);
     text-align: center;
     background-color: var(--white-bg-highlight);

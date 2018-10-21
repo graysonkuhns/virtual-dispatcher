@@ -101,7 +101,7 @@ $(document).ready(function(){
                     currentFlight = flight;
 
                     $("#flightNumber").html("Flight# " + flight.id);
-                    $("#aircraftNumber").html("Plane " + flight.aircraftId);
+                    $("#aircraftNumber").html("Aircraft " + flight.aircraftId);
                     $("#pilotName").html(pilotName);
 
                     if(flight.completed){

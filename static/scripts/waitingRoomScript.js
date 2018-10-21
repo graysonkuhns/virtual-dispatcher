@@ -1,4 +1,6 @@
 var pilots = [];
+var lastName = "";
+var currentName = "";
 
 var host = "http://code-a-thon.xellitix.com:8080";
 
@@ -20,14 +22,27 @@ $(document).ready(function(){
                     //Get pilot name of that flight
                     var name = getPilotName(flight.pilotId);
                     //Add the flight to the waiting room board
-                    flightDivs += ('<div class="listItem"><p>' + name + ' can now fly Aircraft ' + flight.aircraftId + ' in zone ' + flight.zoneId + '</p></div>');
+                    if(flight == rData[rData.length - 1]){
+                        currentName = name;
+                        flightDivs = ('<div class="listItem" id ="last"><p>' + name + ' can now fly Aircraft ' + flight.aircraftId + ' in Zone ' + flight.zoneId + '</p></div>') + flightDivs;
+                    } else {
+                        flightDivs = ('<div class="listItem"><p>' + name + ' can now fly Aircraft ' + flight.aircraftId + ' in Zone ' + flight.zoneId + '</p></div>') + flightDivs;
+                    }
                 });
-                
+
                 // Set the flightList div html equal to the generated flightDivs string
                 $("#flightList").html(flightDivs);
+
+                if(currentName != lastName){
+                    $("#last").effect('highlight', {color: "rgb(150, 0, 0)"}, 1000);
+                }
+                
+                lastName = currentName;
             });
         });
     }, 1000);
+
+    
 });
 
 // Precondition: The pilots array has been filled with pilot data
