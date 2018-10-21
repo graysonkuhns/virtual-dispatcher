@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
         <link rel="stylesheet" type="text/css" href="css/statusStyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="scripts/flightStatusScript.js"></script>
     </head>
     <body>
-        <div id="header">
-            <h1 id="headerText">Flight Status</h1>
-        </div>
-
-        <div id="loginView" class="hidden">
-            <form id="loginForm" action="#" autocomplete="off" method="POST">
-                Pilot Name:
-                <input type="text" name="name" id="name">
-                <div id="searchList"></div>
-                <input type="submit" value="Login">
-            </form>
-        </div>
-
-        <div id="flightView" class="hidden">
-            <div id="flightInfo">
-                <p class="infoItem" id="pilotName"></p>
-                <p class="infoItem" id="flightNumber"></p>
-                <p class="infoItem" id="aircraftNumber"></p>
-                <p class="infoItem" id="status"></p>
+        
+        <div class="middleDiv">
+        
+            <div id="header">
+                <img src="images/logo.png" class="logo">
+                <h1 id="headerText">Flight Status</h1>
             </div>
 
-            <div id="options">
-                <div class="statusOption" id="flightStarted">
-                    <p>Starting Flight</p>
+            <div id="formFields">
+                <div id="loginView" class="hidden">
+                    <form id="loginForm" action="#" autocomplete="off" method="POST">
+                        <input type="text" name="name" id="name" placeholder="Enter name">
+                        <div id="searchList"></div>
+                        <input type="submit" id = "login" value="Login">
+                    </form>
                 </div>
-                <div class="statusOption" id="flightFinished">
-                    <p>Flight Finished</p>
-                </div>
-                <div class="statusOption" id="needsMaintenance">
-                    <p>Needs maintenance</p>
+
+                <div id="flightView" class="hidden">
+                    <div id="flightInfo">
+                        <p class="infoItem" id="pilotName"></p>
+                        <p class="infoItem" id="flightNumber"></p>
+                        <p class="infoItem" id="aircraftNumber"></p>
+                        <p class="infoItem" id="status"></p>
+                    </div>
+
+                    <div id="options">
+                        <div class="statusOption" id="flightStarted">
+                            <p>Starting Flight</p>
+                        </div>
+                        <div class="statusOption" id="flightFinished">
+                            <p>Flight Finished</p>
+                        </div>
+                        <div class="statusOption" id="needsMaintenance">
+                            <p>Needs maintenance</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="flightOver" class="hidden">
-                <p>Your flight is over</p>
-            </div>
+            
         </div>
     </body>
 </html>

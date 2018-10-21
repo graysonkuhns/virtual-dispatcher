@@ -29,10 +29,18 @@ function loadPlanes(){
         if($("#maintenanceTrigger").is(':checked')){
             //Maintenance mode is now on
             var newPlane = '<div class = "plane"><div class="planeBox">';
-            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
             newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + planeId + '" checked></form></div></div>';
             newPlane += '<img class="tailBottom" src="images/tail_maintenance.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + planeId + '</div></div>';
             aircraftList[planeId - 1] = newPlane;
+
+            var htmlList = "";
+            aircraftList.forEach(function(item){
+                htmlList += item;
+            });
+
+            //Set the planes list html
+            $("#planesList").html(htmlList);
 
             $.ajax({
                 type: 'POST',
@@ -48,10 +56,18 @@ function loadPlanes(){
         } else {
             //Maintenance mode is now off
             var newPlane = '<div class = "plane"><div class="planeBox">';
-            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
             newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + planeId + '"></form></div></div>';
             newPlane += '<img class="tailBottom" src="images/tail_available.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + planeId + '</div></div>';
             aircraftList[planeId - 1] = newPlane;
+
+            var htmlList = "";
+            aircraftList.forEach(function(item){
+                htmlList += item;
+            });
+
+            //Set the planes list html
+            $("#planesList").html(htmlList);
 
             $.ajax({
                 type: 'POST',
@@ -89,10 +105,10 @@ function loadWaitingList(){
                     for(let pilotInfo of p){
                         if(pilotInfo.id == pilot.pilotId){
                             var name = pilotInfo.firstName + " " + pilotInfo.lastName;
-                            var newList = '<div class = "pilot"><div class = "pilotBox"><div class = "pilotInfoBox">';
-                            newList += '<img class="pilotImg" src="images/pilot.png"/> <div id="pilotName" class="infoText">';
+                            var newList = '<div class = "pilot"><div class = "pilotBox"><div class = "pilotInfoBoxBig">';
+                            newList += '<img class="infoImg" src="images/pilot.png"/> <div id="pilotName" class="bigInfoText">';
                             newList += name;
-                            newList += '</div></div><div class = "pilotInfoBox"><img class="pilotImg" src="images/time.png"/>';
+                            newList += '</div></div><div class = "pilotInfoBox"><img class="infoImg" src="images/time.png"/>';
                             newList += '<div id="waitTime" class="infoText">';
                             newList += 'Has been waiting for ' + timeDiff;
                             newList += '</div> </div></div></div>';
@@ -187,19 +203,19 @@ function planeLoader(){
                         //Generate plane html code
                         var newPlane = '<div class="plane"><div class="planeBox">';
                         if(flight.length > 0){
-                            newPlane += '<div class="planeInfoBox"><img class="pilotImg" src="images/pilot.png"/><div class="infoText" id="pilotName">' + pilotName + '</div></div>';
-                            newPlane += '<div class="planeInfoBox"><img class="zoneImg" src="images/zone.png"/><div class="infoText" id="zone">Zone ' + flight[0].zoneId + '</div></div>';
+                            newPlane += '<div class="planeInfoBox"><img class="infoImg" src="images/pilot.png"/><div class="infoText" id="pilotName">' + pilotName + '</div></div>';
+                            newPlane += '<div class="planeInfoBox"><img class="infoImg" src="images/zone.png"/><div class="infoText" id="zone">Zone ' + flight[0].zoneId + '</div></div>';
                         } else {
                             newPlane += '<div class="planeInfoBox';
-                            newPlane += '" id="maintenanceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+                            newPlane += '" id="maintenanceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
                             newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + plane.id + '"></form></div>';
                         }
 
                         if(flight.length > 0){
                             if(flight[0].started){
-                                newPlane += '<div class="planeInfoBox"><div class="infoText">In the air</div></div>';
+                                newPlane += '<div class="planeInfoBox"><img class="infoImg" src="images/status.png"/><div class="infoText">In the air</div></div>';
                             } else {
-                                newPlane += '<div class="planeInfoBox"><div class="infoText">On the ground</div></div>';
+                                newPlane += '<div class="planeInfoBox"><img class="infoImg" src="images/status.png"/><div class="infoText">On the ground</div></div>';
                             }
                         }
 
@@ -227,7 +243,7 @@ function planeLoader(){
             } else {
                 //Create plane that needs maintenance
                 var newPlane = '<div class = "plane"><div class="planeBox">';
-                newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+                newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
                 newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + plane.id + '" checked></form></div></div>';
                 newPlane += '<img class="tailBottom" src="images/tail_maintenance.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + plane.id + '</div></div>';
                 
