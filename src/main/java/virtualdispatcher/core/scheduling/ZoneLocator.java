@@ -27,7 +27,7 @@ public class ZoneLocator {
       "      completed = False\n" +
       "    GROUP BY\n" +
       "       zone_id\n" +
-      "    HAVING COUNT(*) > 2\n" +
+      "    HAVING COUNT(*) > 1\n" +
       "  )\n" +
       "LIMIT\n" +
       "  1";
