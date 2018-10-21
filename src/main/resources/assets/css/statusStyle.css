@@ -1,0 +1,110 @@
+.middleDiv {
+    display: block;
+    
+    /* Border For Debug Purposes */
+    /* border: 3px solid red; */
+    margin: auto;
+    margin-top: 15vh;
+    width: 50%;
+    min-width: 300px;
+}
+
+#header {
+    text-align: right;
+    
+    position: relative;
+    width: 100%;
+}
+
+.logo {
+    width:100%;
+}
+
+#headerText {
+    font-size: 3vw;
+    color: var(--gold-text);
+    
+    position: absolute;
+    bottom: 6px;
+    width:100%;
+}
+
+#formFields {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form {
+    text-align: center;
+    
+    margin: auto;
+    position: relative;
+}
+
+input {
+    font-size: 4vh;
+    text-align: center;
+    
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 5px;
+    border: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+#login {
+    color: var(--gold-text);
+    background-color: var(--red-bg);
+    
+    display: block;
+}
+
+#login:hover {
+    background-color: var(--red-bg-hover);
+    cursor: pointer;
+}
+
+#options {
+    background-color: var(--grey-bg-translucent);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.statusOption {
+    margin: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    color: var(--gold-text);
+    background-color: var(--red-bg);
+    border-radius: 10px;
+    font-size: 5vh;
+}
+
+.statusOption:hover {
+    background-color: var(--red-bg-hover);
+    cursor: pointer;
+}
+
+#flightInfo {
+    background-color: var(--gold-bg-translucent);
+    border-radius: 10px;
+}
+
+#flightNumber {
+    float: right;
+}
+
+.infoItem {
+    font-size: 3.5vh;
+    padding: 5px;
+    margin: 0;
+}
+
+#pilotName {
+    text-align: center;
+    font-size: 4.5vh;
+}

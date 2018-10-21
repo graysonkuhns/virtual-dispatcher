@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/checkinStyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/checkinScript.js"></script>
+    </head>
+    <body>
+        
+        <div class="middleDiv">
+        
+            <div id="header">
+                <img src="images/logo.png" class="logo">
+                <h1 id="headerText">Check In/Out</h1>
+            </div>
+
+            <div id="formFields">
+                <form action="#" method="POST" id="checkinForm" autocomplete="off">
+                    <input type="text" name="name" id="name" placeholder = "Enter name"/>
+                    <div id="searchList"></div>
+                    <input type="submit" id="checkin" name="checkin/out" value="Enter a valid name" disabled/>
+                </form>
+            </div>
+
+            <div class="message"> </div>
+            
+        </div>
+        
+    </body>
+</html>

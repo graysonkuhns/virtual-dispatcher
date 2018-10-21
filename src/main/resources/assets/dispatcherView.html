@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
         <link rel="stylesheet" type="text/css" href="css/dispatcherStyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -8,13 +9,19 @@
     </head>
     <body>
         <div id="planeInfo" class="column">
-            <p class="header">Planes</p>
-            <div id="planesList"></div>
+            <p class="listHeader">Planes</p>
+            <div id="planesList">
+            </div>
+        </div>
+        
+        <div id="toolTip">
+            <img id="toolTipImg" src="images/question.png"/>
         </div>
         
         <div id="waitingList" class="column">
-            <p class="header">Waiting List</p>
-            <div id="pilotList"></div>
+            <p class="listHeader">Waiting List</p>
+            <div id="pilotList">
+            </div>
         </div>
     </body>
 </html>
