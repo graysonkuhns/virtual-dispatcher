@@ -1,6 +1,6 @@
 var pilots = [];
 
-var host = "http://code-a-thon.xellitix.com:8080";
+var host = "";
 
 $(document).ready(function(){
     var url = host + "/api/pilots"
