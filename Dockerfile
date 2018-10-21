@@ -17,7 +17,7 @@ RUN  yum makecache fast && \
 # Copy in the app
 RUN mkdir -p /opt/virtual-dispatcher /etc/virtual-dispatcher
 COPY --from=build-env /build/config.yml /etc/virtual-dispatcher/
-COPY --from=build-env /build/target/virtual-dispatcher-0.1.0-SNAPSHOT.jar /opt/virtual-dispatcher/vd.jar
+COPY --from=build-env /build/target/virtual-dispatcher-1.0.0.jar /opt/virtual-dispatcher/vd.jar
 
 # Run the app
 CMD ["java", "-jar", "/opt/virtual-dispatcher/vd.jar", "server", "/etc/virtual-dispatcher/config.yml"]
