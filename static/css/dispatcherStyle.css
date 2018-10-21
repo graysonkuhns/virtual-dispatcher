@@ -42,13 +42,6 @@ table, td {
     background-color: var(--white-bg);
     
     margin: 8px;
-    
-    //margin-bottom: 10px;
-    //font-size: 60px;
-    //padding: 5px;
-    //border-radius: 10px;
-    //text-align: center;
-    //width: 100%;
 }
 
 .planeTable  {
@@ -67,17 +60,13 @@ table, td {
     width: auto;
 }
 
-#pilotName {
+.infoText {
     font-size:3vh;
 }
 
 .zoneImg {
     height: 100%;
     width: auto;
-}
-
-#zone {
-    font-size:3vh;
 }
 
 .maintenanceImg {

@@ -19,24 +19,69 @@ function loadPlanes(){
             planes.forEach(function(plane) {
                 //Check if plane is operational
                 if(plane.operational){
+                    //Get flights
                     var url = host + "/api/flights?aircraftId=" + plane.id + "&completed=false"; 
                     $.getJSON(url, function(flight) {
-                        if(flight.length > 0){
-                            aircraftList[plane.id - 1] = '<div class="plane inUsePlane">Plane ' + plane.id + ' <br><p class="detailInfo">In use by Joe Smith</p></div>';
-                        } else {
-                            aircraftList[plane.id - 1] = '<div class="plane availablePlane">Plane ' + plane.id + ' <br><p class="detailInfo">Available</p></div>';
-                        }
-                        
-                        var htmlList = "";
-                        aircraftList.forEach(function(item){
-                            htmlList += item;
-                        });
+                        //Get pilots
+                        var url = host + "/api/pilots"; 
+                        $.getJSON(url, function(pilots) {
+                            var pilotName = "";
 
-                        //Set the planes list html
-                        $("#planesList").html(htmlList);
+                            if(flight.length > 0){
+                                //Find pilot with matching id
+                                for(let p of pilots){
+                                    if(p.id == flight[0].pilotId){
+                                        pilotName = p.firstName + " " + p.lastName;
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                            //Generate plane html code
+                            var newPlane = '<div class="plane"><div class="planeBox">';
+                            if(flight.length > 0){
+                                newPlane += '<div class="planeInfoBox"><img class="pilotImg" src="images/pilot.png"/><div class="infoText" id="pilotName">' + pilotName + '</div></div>';
+                                newPlane += '<div class="planeInfoBox"><img class="zoneImg" src="images/zone.png"/><div class="infoText" id="zone">Zone ' + flight[0].zoneId + '</div></div>';
+                            } else {
+                                newPlane += '<div class="planeInfoBox';
+                                newPlane += '" id="maintenanceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance class="infoText">MX</div>';
+                                newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger"></form></div>';
+                            }
+
+                            if(flight.started && flight.length > 0){
+                                newPlane += '<div class="planeInfoBox"><div class="infoText">In the air</div></div>';
+                            } else if (flight.length > 0){
+                                newPlane += '<div class="planeInfoBox"><div class="infoText">On the ground</div></div>';
+                            }
+
+                            newPlane += '</div><img class="tailBottom" src="images/';
+    
+                            if(flight.length > 0){
+                                //The plane is in use
+                                newPlane += 'tail_inuse';
+                            } else {
+                                //The plane is available
+                                newPlane += 'tail_available';
+                            }
+                            newPlane += '.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + plane.id + '</div></div>';
+                            aircraftList[plane.id - 1] = newPlane;
+                            
+                            var htmlList = "";
+                            aircraftList.forEach(function(item){
+                                htmlList += item;
+                            });
+    
+                            //Set the planes list html
+                            $("#planesList").html(htmlList);
+                        });
                     });
                 } else {
-                    aircraftList[plane.id - 1] = '<div class="plane maintenancePlane">Plane ' + plane.id + ' <br><p class="detailInfo">Needs Maintenance</p></div>';
+                    var newPlane = '<div class = "plane"><div class="planeBox">';
+                    newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+                    newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" checked></form></div></div>';
+                    newPlane += '<img class="tailBottom" src="images/tail_maintenance.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + plane.id + '</div></div>';
+                   
+                    aircraftList[plane.id - 1] =  newPlane;
 
                     var htmlList = "";
                     aircraftList.forEach(function(item){
@@ -117,4 +162,14 @@ function getTimeDiff(oldTime){
     }
 
     return timeDiff;
+}
+
+function getPilotName(id){
+    for (let pilot of pilots) {
+        if(pilot.id == id){
+            return pilot.firstName + " " + pilot.lastName;
+        }
+    }
+    // Default return case, reached if the pilot with given id was not found in pilots array
+    return "Unknown Pilot";
 }
