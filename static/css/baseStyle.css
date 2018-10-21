@@ -10,6 +10,7 @@
     --white-bg: rgb(230, 230, 230);
     --white-bg-highlight: rgb(250, 250, 250);
     --white-bg-hover: rgb(200, 200, 200);
+    --white-bg-translucent: rgba(230, 230, 230, 0.5);
     --grey-bg: rgb(150, 140, 130);
     
     --black-text: rgb(0, 0, 0);
