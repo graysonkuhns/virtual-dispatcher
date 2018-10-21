@@ -91,13 +91,13 @@ $(document).ready(function(){
                     //If not, put on waiting list
                     //Set message id for good or bad message
 
-                    //Fade out message after 10 seconds
+                    //Fade out message after 3 seconds
                     setTimeout(function(){
                         $(".message").fadeOut("slow", function () {
                             $(".message").html("");
                             $(".message").fadeIn("fast");
                         });
-                    }, 10000);
+                    }, 3000);
                 }
             });
         } else {

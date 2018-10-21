@@ -26,7 +26,7 @@ function loadPlanes(){
 
     $("#planesList").on('change', '#maintenanceTrigger', function() {
         var planeId = $(this).attr("data-id");
-        if($("#maintenanceTrigger").is(':checked')){
+        if($(this).is(':checked')){
             //Maintenance mode is now on
             var newPlane = '<div class = "plane"><div class="planeBox">';
             newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
