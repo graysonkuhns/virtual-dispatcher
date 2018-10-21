@@ -25,10 +25,9 @@ public class ZoneLocator {
       "      flights\n" +
       "    WHERE\n" +
       "      completed = False\n" +
-      "      AND started = True\n" +
       "    GROUP BY\n" +
       "       zone_id\n" +
-      "     HAVING COUNT(*) > 2\n" +
+      "    HAVING COUNT(*) > 2\n" +
       "  )\n" +
       "LIMIT\n" +
       "  1";
