@@ -59,13 +59,16 @@ public class FlightDAO {
 
   public void create(final Flight flight) {
     jdbi.useHandle(handle -> handle
-      .createQuery("INSERT INTO flights " +
-          "(completed, started, pilot_id, aircraft_id, zone_id) " +
-          "VALUES (:completed, :started, :pilot_id, :aircraft_id, :zone_id)")
+      .createUpdate(
+          "INSERT\n" +
+              "  INTO flights (completed, started, pilot_id, aircraft_id, zone_id)\n" +
+              "  VALUES (:completed, :started, :pilot_id, :aircraft_id, :zone_id)"
+      )
       .bind("completed", flight.isCompleted())
       .bind("started", flight.isStarted())
       .bind("pilot_id", flight.getPilotId())
       .bind("aircraft_id", flight.getAircraftId())
-      .bind("zone_id", flight.getZoneId()));
+      .bind("zone_id", flight.getZoneId())
+      .execute());
   }
 }
