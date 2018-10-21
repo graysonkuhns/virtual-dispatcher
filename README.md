@@ -26,9 +26,12 @@ include integration with existing aircraft scheduling and maintenance software c
 ## Technical Prerequisites
 
 ### Production
+* Linux
+* Git
 * Docker Community Edition v17.06.2 or later
 
 ### Local Development
+* Git
 * Java 8
 * Maven
 * MariaDB
@@ -36,6 +39,27 @@ include integration with existing aircraft scheduling and maintenance software c
 ## Usage
 
 ### Production
+
+1) Clone the master branch using Git
+``` bash
+git clone https://github.com/graysonkuhns/virtual-dispatcher.git
+```
+
+2) Prepare MariaDB
+``` bash
+# Start MariaDB
+cd ./database
+./up.sh
+cd ..
+
+# Initialize the database
+docker exec -it mariadb /opt/virtual-dispatcher/database/init.sh
+```
+
+3) Start Virtual Dispatcher
+``` bash
+./up.sh
+```
 
 ### Local Development
 
