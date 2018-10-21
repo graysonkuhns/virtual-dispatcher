@@ -29,9 +29,10 @@ public class VirtualDispatcherApplication extends Application<VirtualDispatcherC
     @Override
     public void run(final VirtualDispatcherConfiguration configuration,
                     final Environment environment) {
-        // Serve API 
+        // Serve API resources at /api path
         environment.jersey().setUrlPattern("/api/*");
 
+        // Run the application
         Guice
             .createInjector(new ApplicationModule(environment, configuration))
             .getInstance(ApplicationRunner.class)

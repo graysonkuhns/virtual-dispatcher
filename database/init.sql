@@ -55,9 +55,20 @@ ALTER TABLE availability
 	ON DELETE CASCADE;
 
 ALTER TABLE flights
+    ADD FOREIGN KEY (pilot_id)
+	REFERENCES pilot (id)
+	ON DELETE NO ACTION;
+
+ALTER TABLE flights
 	ADD FOREIGN KEY (aircraft_id)
 	REFERENCES aircraft (id)
 	ON DELETE NO ACTION;
+
+ALTER TABLE flights
+	ADD FOREIGN KEY (zone_id)
+	REFERENCES zones (id)
+	ON DELETE NO ACTION;
+
 
 #######################################################################
 ## Populate database
