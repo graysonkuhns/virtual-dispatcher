@@ -12,7 +12,7 @@ import virtualdispatcher.api.Zone;
 import virtualdispatcher.db.dao.ZoneDAO;
 
 @Singleton
-@Path("/api/zones")
+@Path("/zones")
 @Produces(MediaType.APPLICATION_JSON)
 public class ZonesResource implements Resource {
 

@@ -10,7 +10,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="virtual-dispatcher" target="1.8" />
       <module name="virtual-dispatcher (1)" target="1.8" />
     </bytecodeTargetLevel>
   </component>

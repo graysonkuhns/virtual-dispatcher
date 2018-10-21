@@ -14,7 +14,7 @@ import virtualdispatcher.core.scheduling.PilotQueue;
 import virtualdispatcher.db.dao.PilotDAO;
 
 @Singleton
-@Path("/api/pilots")
+@Path("/pilots")
 @Produces(MediaType.APPLICATION_JSON)
 public class PilotsResource implements Resource {
 

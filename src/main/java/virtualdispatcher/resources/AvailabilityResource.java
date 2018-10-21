@@ -23,7 +23,7 @@ import virtualdispatcher.db.dao.AvailabilityDAO;
  * @author Grayson Kuhns/Jerome Tujague
  */
 @Singleton
-@Path("/api/availability")
+@Path("/availability")
 @Produces(MediaType.APPLICATION_JSON)
 public class AvailabilityResource implements Resource {
 

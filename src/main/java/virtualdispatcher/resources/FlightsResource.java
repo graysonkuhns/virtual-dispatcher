@@ -26,7 +26,7 @@ import virtualdispatcher.db.dao.FlightDAO;
  * @author Grayson Kuhns
  */
 @Singleton
-@Path("/api/flights")
+@Path("/flights")
 @Produces(MediaType.APPLICATION_JSON)
 public class FlightsResource implements Resource {
 

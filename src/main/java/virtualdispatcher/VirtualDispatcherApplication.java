@@ -2,6 +2,7 @@ package virtualdispatcher;
 
 import com.google.inject.Guice;
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import java.util.EnumSet;
@@ -22,16 +23,17 @@ public class VirtualDispatcherApplication extends Application<VirtualDispatcherC
 
     @Override
     public void initialize(final Bootstrap<VirtualDispatcherConfiguration> bootstrap) {
-        // TODO: application initialization
+        bootstrap.addBundle(new AssetsBundle("/assets", "/", "index.html"));
     }
 
     @Override
     public void run(final VirtualDispatcherConfiguration configuration,
                     final Environment environment) {
+        environment.jersey().setUrlPattern("/api/*");
+
         Guice
             .createInjector(new ApplicationModule(environment, configuration))
             .getInstance(ApplicationRunner.class)
             .run(environment, configuration);
     }
-
 }

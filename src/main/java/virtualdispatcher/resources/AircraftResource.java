@@ -9,15 +9,13 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import io.dropwizard.jersey.PATCH;
 import virtualdispatcher.api.Aircraft;
-import virtualdispatcher.core.request.CreateAvailabilityRequest;
 import virtualdispatcher.core.request.OperationalStatusUpdateRequest;
 import virtualdispatcher.core.scheduling.AircraftLocator;
 import virtualdispatcher.db.dao.AircraftDAO;
 
 @Singleton
-@Path("/api/aircraft")
+@Path("/aircraft")
 @Produces(MediaType.APPLICATION_JSON)
 public class AircraftResource implements Resource {
 
