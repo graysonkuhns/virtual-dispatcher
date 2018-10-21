@@ -95,17 +95,16 @@ input {
 }
 
 #flightNumber {
-    font-size: 3vh;
     float: right;
 }
 
 .infoItem {
-    font-size: 3vh;
+    font-size: 3.5vh;
     padding: 5px;
     margin: 0;
 }
 
 #pilotName {
     text-align: center;
-    font-size: 4vh;
+    font-size: 4.5vh;
 }
