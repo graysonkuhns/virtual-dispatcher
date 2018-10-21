@@ -5,12 +5,14 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
 import java.util.Optional;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import io.dropwizard.jersey.PATCH;
 import virtualdispatcher.api.Aircraft;
+import virtualdispatcher.core.request.CreateAvailabilityRequest;
+import virtualdispatcher.core.request.OperationalStatusUpdateRequest;
 import virtualdispatcher.core.scheduling.AircraftLocator;
 import virtualdispatcher.db.dao.AircraftDAO;
 
@@ -50,5 +52,18 @@ public class AircraftResource implements Resource {
   @Path("/next")
   public Optional<Aircraft> getNextAvailableAircraft() {
     return aircraftLocator.getNextAvailableAircraft();
+  }
+
+  @POST
+  @Timed
+  @Path("{id}")
+  @Consumes(MediaType.APPLICATION_JSON)
+  public Response updateStatus(@PathParam("id") String idStr, final OperationalStatusUpdateRequest request) {
+    int id = Integer.parseInt(idStr);
+    aircraftDAO.updateOperationalStatus(id, request.getStatus());
+
+    return Response
+        .ok()
+        .build();
   }
 }
