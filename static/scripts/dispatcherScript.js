@@ -1,6 +1,6 @@
 
 var planes = [];
-
+var aircraftList = [];
 var host = "http://code-a-thon.xellitix.com:8080";
 
 window.addEventListener("load", start, false);
@@ -12,87 +12,60 @@ function start(){
 }
 
 function loadPlanes(){
-    var aircraftList = [];
-    setInterval(function(){
-        var url = host + "/api/aircraft"; 
-        $.getJSON(url, function(planes) {
-            planes.forEach(function(plane) {
-                //Check if plane is operational
-                if(plane.operational){
-                    //Get flights
-                    var url = host + "/api/flights?aircraftId=" + plane.id + "&completed=false"; 
-                    $.getJSON(url, function(flight) {
-                        //Get pilots
-                        var url = host + "/api/pilots"; 
-                        $.getJSON(url, function(pilots) {
-                            var pilotName = "";
+    planeTimer = setInterval(planeLoader, 1000);
 
-                            if(flight.length > 0){
-                                //Find pilot with matching id
-                                for(let p of pilots){
-                                    if(p.id == flight[0].pilotId){
-                                        pilotName = p.firstName + " " + p.lastName;
-                                        break;
-                                    }
-                                }
-                            }
-                            
-                            //Generate plane html code
-                            var newPlane = '<div class="plane"><div class="planeBox">';
-                            if(flight.length > 0){
-                                newPlane += '<div class="planeInfoBox"><img class="pilotImg" src="images/pilot.png"/><div class="infoText" id="pilotName">' + pilotName + '</div></div>';
-                                newPlane += '<div class="planeInfoBox"><img class="zoneImg" src="images/zone.png"/><div class="infoText" id="zone">Zone ' + flight[0].zoneId + '</div></div>';
-                            } else {
-                                newPlane += '<div class="planeInfoBox';
-                                newPlane += '" id="maintenanceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance class="infoText">MX</div>';
-                                newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger"></form></div>';
-                            }
+    $("#planesList").on('mouseenter', '#maintenanceTrigger', function() {
+        //Do not refresh page
+        clearInterval(planeTimer);
+    });
 
-                            if(flight.started && flight.length > 0){
-                                newPlane += '<div class="planeInfoBox"><div class="infoText">In the air</div></div>';
-                            } else if (flight.length > 0){
-                                newPlane += '<div class="planeInfoBox"><div class="infoText">On the ground</div></div>';
-                            }
+    $("#planesList").on('mouseleave', '#maintenanceTrigger', function() {
+        //Start refreshing page again
+        planeTimer = setInterval(planeLoader, 1000);
+    });
 
-                            newPlane += '</div><img class="tailBottom" src="images/';
-    
-                            if(flight.length > 0){
-                                //The plane is in use
-                                newPlane += 'tail_inuse';
-                            } else {
-                                //The plane is available
-                                newPlane += 'tail_available';
-                            }
-                            newPlane += '.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + plane.id + '</div></div>';
-                            aircraftList[plane.id - 1] = newPlane;
-                            
-                            var htmlList = "";
-                            aircraftList.forEach(function(item){
-                                htmlList += item;
-                            });
-    
-                            //Set the planes list html
-                            $("#planesList").html(htmlList);
-                        });
-                    });
-                } else {
-                    var newPlane = '<div class = "plane"><div class="planeBox">';
-                    newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
-                    newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" checked></form></div></div>';
-                    newPlane += '<img class="tailBottom" src="images/tail_maintenance.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + plane.id + '</div></div>';
-                   
-                    aircraftList[plane.id - 1] =  newPlane;
+    $("#planesList").on('change', '#maintenanceTrigger', function() {
+        var planeId = $(this).attr("data-id");
+        if($("#maintenanceTrigger").is(':checked')){
+            //Maintenance mode is now on
+            var newPlane = '<div class = "plane"><div class="planeBox">';
+            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+            newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + planeId + '" checked></form></div></div>';
+            newPlane += '<img class="tailBottom" src="images/tail_maintenance.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + planeId + '</div></div>';
+            aircraftList[planeId - 1] = newPlane;
 
-                    var htmlList = "";
-                    aircraftList.forEach(function(item){
-                        htmlList += item;
-                    });
-
-                    $("#planesList").html(htmlList);
-                }
+            $.ajax({
+                type: 'POST',
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json' 
+                },
+                url: host + '/api/aircraft/' + planeId,
+                data: JSON.stringify({
+                    operational: false
+                })
             });
-        });
-    }, 1000);
+        } else {
+            //Maintenance mode is now off
+            var newPlane = '<div class = "plane"><div class="planeBox">';
+            newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+            newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + planeId + '"></form></div></div>';
+            newPlane += '<img class="tailBottom" src="images/tail_available.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + planeId + '</div></div>';
+            aircraftList[planeId - 1] = newPlane;
+
+            $.ajax({
+                type: 'POST',
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json' 
+                },
+                url: host + '/api/aircraft/' + planeId,
+                data: JSON.stringify({
+                    operational: true
+                })
+            });
+        }
+    });
 }
 
 function loadWaitingList(){
@@ -185,4 +158,88 @@ function getPilotName(id){
     }
     // Default return case, reached if the pilot with given id was not found in pilots array
     return "Unknown Pilot";
+}
+
+function planeLoader(){
+    var url = host + "/api/aircraft"; 
+    $.getJSON(url, function(planes) {
+        planes.forEach(function(plane) {
+            //Check if plane is operational
+            if(plane.operational){
+                //Get flights
+                var url = host + "/api/flights?aircraftId=" + plane.id + "&completed=false"; 
+                $.getJSON(url, function(flight) {
+                    //Get pilots
+                    var url = host + "/api/pilots"; 
+                    $.getJSON(url, function(pilots) {
+                        var pilotName = "";
+
+                        if(flight.length > 0){
+                            //Find pilot with matching id
+                            for(let p of pilots){
+                                if(p.id == flight[0].pilotId){
+                                    pilotName = p.firstName + " " + p.lastName;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        //Generate plane html code
+                        var newPlane = '<div class="plane"><div class="planeBox">';
+                        if(flight.length > 0){
+                            newPlane += '<div class="planeInfoBox"><img class="pilotImg" src="images/pilot.png"/><div class="infoText" id="pilotName">' + pilotName + '</div></div>';
+                            newPlane += '<div class="planeInfoBox"><img class="zoneImg" src="images/zone.png"/><div class="infoText" id="zone">Zone ' + flight[0].zoneId + '</div></div>';
+                        } else {
+                            newPlane += '<div class="planeInfoBox';
+                            newPlane += '" id="maintenanceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+                            newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + plane.id + '"></form></div>';
+                        }
+
+                        if(flight.length > 0){
+                            if(flight[0].started){
+                                newPlane += '<div class="planeInfoBox"><div class="infoText">In the air</div></div>';
+                            } else {
+                                newPlane += '<div class="planeInfoBox"><div class="infoText">On the ground</div></div>';
+                            }
+                        }
+
+                        newPlane += '</div><img class="tailBottom" src="images/';
+
+                        if(flight.length > 0){
+                            //The plane is in use
+                            newPlane += 'tail_inuse';
+                        } else {
+                            //The plane is available
+                            newPlane += 'tail_available';
+                        }
+                        newPlane += '.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + plane.id + '</div></div>';
+                        aircraftList[plane.id - 1] = newPlane;
+                        
+                        var htmlList = "";
+                        aircraftList.forEach(function(item){
+                            htmlList += item;
+                        });
+
+                        //Set the planes list html
+                        $("#planesList").html(htmlList);
+                    });
+                });
+            } else {
+                //Create plane that needs maintenance
+                var newPlane = '<div class = "plane"><div class="planeBox">';
+                newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="maintenanceImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+                newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + plane.id + '" checked></form></div></div>';
+                newPlane += '<img class="tailBottom" src="images/tail_maintenance.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + plane.id + '</div></div>';
+                
+                aircraftList[plane.id - 1] =  newPlane;
+
+                var htmlList = "";
+                aircraftList.forEach(function(item){
+                    htmlList += item;
+                });
+
+                $("#planesList").html(htmlList);
+            }
+        });
+    });
 }

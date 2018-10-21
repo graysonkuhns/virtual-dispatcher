@@ -97,7 +97,7 @@ $(document).ready(function(){
         var url = host + "/api/flights"
         $.getJSON(url, function(flightList) { 
             for(let flight of flightList){
-                if(flight.pilotId == pilotId && !flight.completeted){
+                if(flight.pilotId == pilotId){
                     currentFlight = flight;
 
                     $("#flightNumber").html("Flight# " + flight.id);
@@ -109,14 +109,10 @@ $(document).ready(function(){
                         $("#status").html("Flight Completed");
 
                         $("#options").addClass("hidden");
-                        $("#flightOver").addClass("visible")
                         $("#options").removeClass("visible");
-                        $("#flightOver").removeClass("hidden")
                     } else {
                         $("#options").addClass("visible");
-                        $("#flightOver").addClass("hidden")
                         $("#options").removeClass("hidden");
-                        $("#flightOver").removeClass("visible")
 
                         if(flight.started){
                             //Flight is started but not completed
@@ -141,7 +137,6 @@ $(document).ready(function(){
                     }
 
                     showFlight();
-                    break;
                 }
             }
         });
@@ -149,25 +144,56 @@ $(document).ready(function(){
 
     $("#flightStarted").on("click", function(){
         $.ajax({
-            type: 'PATCH',
+            type: 'POST',
             headers: { 
                 'Accept': 'application/json',
                 'Content-Type': 'application/json' 
             },
-            url: host + '/api/availability',
+            url: host + '/api/flights/' + currentFlight.id,
             data: JSON.stringify({
-                pilotId: pilot_id
+                started: true
             })
         });
     });
 
     $("#flightFinished").on("click", function(){
-
+        $.ajax({
+            type: 'POST',
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json' 
+            },
+            url: host + '/api/flights/' + currentFlight.id,
+            data: JSON.stringify({
+                completed: true
+            })
+        });
     });
 
     $("#needsMaintenance").on("click", function(){
-        console.log(currentFlight.aircraftId);
-        currentFlight.aircraftId;
+        $.ajax({
+            type: 'POST',
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json' 
+            },
+            url: host + '/api/aircraft/' + currentFlight.aircraftId,
+            data: JSON.stringify({
+                operational: false
+            })
+        });
+
+        $.ajax({
+            type: 'POST',
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json' 
+            },
+            url: host + '/api/flights/' + currentFlight.id,
+            data: JSON.stringify({
+                completed: true
+            })
+        });
     });
 });
 
