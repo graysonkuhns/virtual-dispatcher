@@ -1,10 +1,32 @@
+.middleDiv {
+    display: block;
+    margin: auto;
+    margin-top: 2vh;
+    width: 80%;
+    min-width: 300px;
+}
+
 #header {
-    width: 100%;
+    background-color: var(--red-bg);
     text-align: center;
+    
+    //position: relative;
+    border-radius:30px;
+    width: 100%;
+}
+
+.logo {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width:13vw;
 }
 
 #headerText {
-    font-size: 60px;
+    font-size: 5vw;
+    color: var(--gold-text);
+    
+    width:100%;
 }
 
 #flightList {
@@ -12,7 +34,13 @@
 }
 
 .listItem {
-    font-size: 40px;
+    background-color: var(--green-bg);
+    color: var(--white-text);
+    font-size: 3vw;
     text-align: center;
-    margin-top: 20px;
+    
+    border-radius: 10px;
+    margin-top: 2vw;
+    margin-left: 4vw;
+    margin-right: 4vw;
 }

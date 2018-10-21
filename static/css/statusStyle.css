@@ -1,15 +1,73 @@
+.middleDiv {
+    display: block;
+    
+    /* Border For Debug Purposes */
+    /* border: 3px solid red; */
+    margin: auto;
+    margin-top: 15vh;
+    width: 50%;
+    min-width: 300px;
+}
+
 #header {
+    text-align: right;
+    
+    position: relative;
     width: 100%;
 }
 
+.logo {
+    width:100%;
+}
+
 #headerText {
+    font-size: 3vw;
+    color: var(--gold-text);
+    
+    position: absolute;
+    bottom: 6px;
+    width:100%;
+}
+
+#formFields {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form {
     text-align: center;
-    font-size: 40px;
-    margin: 0px;
+    
+    margin: auto;
+    position: relative;
+}
+
+input {
+    font-size: 2.5vw;
+    text-align: center;
+    
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 5px;
+    border: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+#login {
+    color: var(--gold-text);
+    background-color: var(--red-bg);
+    
+    display: block;
+}
+
+#login:hover {
+    background-color: var(--red-bg-hover);
+    cursor: pointer;
 }
 
 #options {
-    background-color: rgb(165, 165, 165);
+    background-color: var(--grey-bg-translucent);
     padding: 10px;
     border-radius: 5px;
     margin-top: 20px;
@@ -20,35 +78,29 @@
     margin-bottom: 10px;
     padding: 5px;
     text-align: center;
-    background-color: rgb(252, 94, 94);
+    color: var(--gold-text);
+    background-color: var(--red-bg);
     border-radius: 10px;
-    font-size: 40px;
+    font-size: 2.5vw;
 }
 
 .statusOption:hover {
-    background-color:  rgb(199, 72, 72);
+    background-color: var(--red-bg-hover);
     cursor: pointer;
 }
 
 #flightInfo {
-    background-color: rgb(165, 165, 165);
-    border-radius: 5px;
+    background-color: var(--gold-bg-translucent);
+    border-radius: 10px;
 }
 
 #flightNumber {
+    font-size: 5vw;
     float: right;
 }
 
 .infoItem {
-    font-size: 16px;
+    font-size: 2vw;
     padding: 5px;
     margin: 0;
-}
-
-form {
-    font-size: 20px;
-}
-
-form input {
-    font-size: 20px;
 }
