@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -56,7 +57,7 @@ public class FlightsResource implements Resource {
         .collect(Collectors.toList());
   }
 
-  @PATCH
+  @POST
   @Timed
   @Path("{id}")
   public Response updateFlight(@PathParam("id") String idStr, final UpdateFlightStatusRequest request) {
