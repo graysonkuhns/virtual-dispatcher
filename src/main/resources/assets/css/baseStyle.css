@@ -17,14 +17,15 @@
     --grey-bg: rgb(150, 140, 130);
     --grey-bg-translucent: rgba(150, 140, 130, 0.5);
     
-    --black-text: rgb(0, 0, 0);
-    --gold-text: rgb(250, 190, 0);
     --red-text: rgb(150, 0, 0);
+    --gold-text: rgb(250, 190, 0);
     --green-text: rgb(40, 100, 0);
-    --grey-text: rgb(150, 140, 130);
+    --black-text: rgb(0, 0, 0);
     --white-text: rgb(255, 255, 255);
+    --grey-text: rgb(150, 140, 130);
     
     --white-accent: rgb(200, 200, 200);
+    --black-accent: rgb(0, 0, 0);
 }
 
 body {
