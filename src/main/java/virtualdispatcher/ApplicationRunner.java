@@ -4,7 +4,7 @@ import io.dropwizard.setup.Environment;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import virtualdispatcher.ZoneLocator;
+import virtualdispatcher.core.scheduling.ZoneLocator;
 import virtualdispatcher.resources.Resource;
 
 @Singleton

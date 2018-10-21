@@ -2,6 +2,10 @@ package virtualdispatcher.api;
 
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.annotation.Nullable;
+import org.jdbi.v3.core.statement.StatementContext;
 
 /**
  * Default {@link Flight} implementation.
@@ -11,7 +15,7 @@ import com.google.inject.assistedinject.Assisted;
 public class DefaultFlight implements Flight {
 
   // Properties
-  private final int id;
+  private final Integer id;
   private final boolean completed;
   private final boolean started;
   private final int pilotId;
@@ -30,7 +34,7 @@ public class DefaultFlight implements Flight {
    */
   @Inject
   DefaultFlight(
-      @Assisted("id") final int id,
+      @Assisted("id") @Nullable final Integer id,
       @Assisted("completed") final boolean completed,
       @Assisted("started") final boolean started,
       @Assisted("pilotId") final int pilotId,
@@ -51,7 +55,7 @@ public class DefaultFlight implements Flight {
    * @return The ID.
    */
   @Override
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 

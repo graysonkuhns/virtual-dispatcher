@@ -1,5 +1,7 @@
 package virtualdispatcher.api;
 
+import org.jdbi.v3.core.argument.Argument;
+
 /**
  * Flight model.
  *
@@ -12,7 +14,7 @@ public interface Flight {
    *
    * @return The ID.
    */
-  int getId();
+  Integer getId();
 
   /**
    * Checks if the flight has been completed.

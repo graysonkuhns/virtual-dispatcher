@@ -11,7 +11,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import virtualdispatcher.api.Flight;
+import virtualdispatcher.core.scheduling.FlightScheduler;
 import virtualdispatcher.db.dao.FlightDAO;
 
 /**
@@ -26,10 +28,15 @@ public class FlightsResource implements Resource {
 
   // Dependencies
   private final FlightDAO flightDAO;
+  private final FlightScheduler flightScheduler;
 
   @Inject
-  FlightsResource(final FlightDAO flightDAO) {
+  FlightsResource(
+      final FlightDAO flightDAO,
+      final FlightScheduler flightScheduler) {
+
     this.flightDAO = flightDAO;
+    this.flightScheduler = flightScheduler;
   }
 
   @GET
@@ -44,5 +51,16 @@ public class FlightsResource implements Resource {
         .stream()
         .filter(flight -> aircraftId == null || flight.getAircraftId() == aircraftId)
         .collect(Collectors.toList());
+  }
+
+  @GET
+  @Timed
+  @Path("/schedule")
+  public Response scheduleFlight() {
+    flightScheduler.scheduleFlights();
+
+    return Response
+        .ok()
+        .build();
   }
 }

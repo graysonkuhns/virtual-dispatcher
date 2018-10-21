@@ -1,6 +1,7 @@
 package virtualdispatcher.core.scheduling;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -9,6 +10,7 @@ import virtualdispatcher.api.Flight;
 import virtualdispatcher.db.dao.AircraftDAO;
 import virtualdispatcher.db.dao.FlightDAO;
 
+@Singleton
 public class AircraftLocator {
 
   // Dependencies

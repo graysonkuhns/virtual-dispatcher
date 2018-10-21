@@ -1,4 +1,4 @@
-package virtualdispatcher;
+package virtualdispatcher.core.scheduling;
 
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.mapper.RowMappers;
