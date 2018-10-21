@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Build the application Docker image
-docker build -t virtual-dispatcher:latest .
+docker build -t virtual-dispatcher:1.0.0 .
 
 # Stop the service
 docker stop virtual-dispatcher
@@ -12,4 +12,4 @@ docker run \
   --name virtual-dispatcher \
   --network host \
   -d \
-  virtual-dispatcher:latest
+  virtual-dispatcher:1.0.0

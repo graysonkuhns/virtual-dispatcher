@@ -68,7 +68,7 @@ docker exec -it mariadb /opt/virtual-dispatcher/database/init.sh
 mvn clean install
 
 # Run the application
-java -jar target/virtual-dispatcher-0.1.0-SNAPSHOT.jar server config.yml
+java -jar target/virtual-dispatcher-1.0.0.jar server config.yml
 
 # Interact with the application
 Open `http://localhost:8080` in your browser
