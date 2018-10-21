@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.mapper.RowMappers;
 import virtualdispatcher.api.Aircraft;
+import virtualdispatcher.api.Availability;
 import virtualdispatcher.db.mapper.AircraftMapper;
 
 @Singleton
@@ -30,6 +31,19 @@ public class AircraftDAO {
 
   public List<Aircraft> list() {
     return list(null);
+  }
+
+  /**
+   * Updates a {@link Aircraft}.
+   *
+   * @param id The pilot ID.
+   * @param operational The operational status
+   */
+  public void updateOperationalStatus(final int id, final boolean operational) {
+    jdbi.useHandle(handle -> handle
+        .createUpdate("UPDATE aircraft SET operational = :operational WHERE id = :id")
+        .bind("operational", operational)
+        .execute());
   }
 
   public List<Aircraft> list(final Boolean operational) {
