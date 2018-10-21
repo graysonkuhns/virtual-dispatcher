@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/dispatcherStyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/dispatcherScript.js"></script>
+    </head>
+    <body>
+        <div id="planeInfo" class="column">
+            <p class="listHeader">Planes</p>
+            <div id="planesList">
+            </div>
+        </div>
+        
+        <div id="toolTipInitiator">
+            <!---->
+        
+            
+            <table id="toolTipTable">
+                <tr>
+                    <th colspan="2">Help</th>
+                </tr>
+                <tr>
+                    <td class="tipCellImg"><img class="infoImg" src="images/pilot.png"/></td>
+                    <td>Assigned Pilot</td>
+                </tr>
+                <tr>
+                    <td class="tipCellImg"><img class="infoImg" src="images/zone.png"/></td>
+                    <td>Assigned Zone</td>
+                </tr>
+                <tr>
+                    <td class="tipCellImg"><img class="infoImg" src="images/maintenance.png"/></td>
+                    <td>In/Out Maintenance</td>
+                </tr>
+                <tr>
+                    <td class="tipCellImg"><img class="infoImg" src="images/status.png"/></td>
+                    <td>Plane Status</td>
+                </tr>
+                <tr>
+                    <td class="tipCellImg"><img class="infoImg" src="images/time.png"/></td>
+                    <td>Time Waiting</td>
+                </tr>
+                <tr>
+                    <td class="tipCellImg" id="tipColorGreen"></td>
+                    <td>Avaliable</td>
+                </tr>
+                <tr>
+                    <td class="tipCellImg" id="tipColorGold"></td>
+                    <td>In Use</td>
+                </tr>
+                <tr>
+                    <td class="tipCellImg" id="tipColorRed"></td>
+                    <td>Under Maintenance</td>
+                </tr>
+            </table>
+            <img id="toolTipImg" src="images/question.png"/>
+        </div>
+        
+        <div id="waitingList" class="column">
+            <p class="listHeader">Waiting List</p>
+            <div id="pilotList">
+            </div>
+        </div>
+    </body>
+</html>

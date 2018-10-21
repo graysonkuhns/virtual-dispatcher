@@ -1,7 +1,7 @@
 
 var planes = [];
 var aircraftList = [];
-var host = "http://code-a-thon.xellitix.com:8080";
+var host = "";
 
 window.addEventListener("load", start, false);
 

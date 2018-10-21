@@ -2,7 +2,7 @@ var pilots = [];
 var lastName = "";
 var currentName = "";
 
-var host = "http://code-a-thon.xellitix.com:8080";
+var host = "";
 
 $(document).ready(function(){
     //Check for new data every second
