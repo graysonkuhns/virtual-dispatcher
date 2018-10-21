@@ -57,6 +57,30 @@ public class FlightDAO {
         .collect(Collectors.toList()));
   }
 
+  public void changeStartedStatus(final int id, final boolean started) {
+    jdbi.useHandle(handle -> handle
+      .createUpdate(
+          "UPDATE flights\n" +
+              "  SET started = :started\n" +
+              "WHERE id = :id"
+      )
+      .bind("id", id)
+      .bind("started", started)
+      .execute());
+  }
+
+  public void changeCompletedStatus(final int id, final boolean completed) {
+    jdbi.useHandle(handle -> handle
+        .createUpdate(
+            "UPDATE flights\n" +
+                "  SET completed = :completed\n" +
+                "WHERE id = :id"
+        )
+        .bind("id", id)
+        .bind("completed", completed)
+        .execute());
+  }
+
   public void create(final Flight flight) {
     jdbi.useHandle(handle -> handle
       .createUpdate(

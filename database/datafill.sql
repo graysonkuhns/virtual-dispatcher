@@ -7,7 +7,13 @@ INSERT INTO pilot (f_name, l_name)
 		("Mitchell", "Jurich"),
 		("Jerome", "Tujague"),
 		("Grayson", "Kuhns"),
-		("Jon", "Brockhorst");
+		("Jon", "Bockhorst"),
+		("Morgan", "Benton"),
+		("Connor", "Marchand"),
+		("Belinda", "Copus"),
+		("Neal", "Patterson"),
+		("Eric", "Benton"),
+		("Cami", "Kuhns");
 		
 INSERT INTO aircraft (operational)
 	VALUES
