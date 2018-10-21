@@ -18,7 +18,6 @@ INSERT INTO aircraft (operational)
 		(true),
 		(false),
 		(true),
-		(true),
 		(true);
 	
 INSERT INTO zones
@@ -29,17 +28,3 @@ INSERT INTO zones
 		(),
 		(),
 		();
-	
-INSERT INTO availability
-	VALUES
-		(2, TIME_FORMAT("11:02:12", "%T")),
-		(1, TIME_FORMAT("10:33:00", "%T")),
-		(5, TIME_FORMAT("13:14:47", "%T"));
-	
-INSERT INTO flights (started, completed, pilot_id, aircraft_id, zone_id)
-	VALUES
-		(true, true, 2, 4, 2),
-		(true, true, 1, 6, 3),
-		(true, true, 3, 2, 1),
-		(false, false, 3, 1, 1),
-		(false, false, 4, 2, 1);
