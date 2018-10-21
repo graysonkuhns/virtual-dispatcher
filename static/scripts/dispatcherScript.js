@@ -116,7 +116,15 @@ function loadWaitingList(){
                     for(let pilotInfo of p){
                         if(pilotInfo.id == pilot.pilotId){
                             var name = pilotInfo.firstName + " " + pilotInfo.lastName;
-                            waitingList[counter++] = '<div class="waitingPilot">' + name + '<br><p class="detailInfo">Has been waiting for '+ timeDiff + '</p></div>';
+                            var newList = '<div class = "pilot"><div class = "pilotBox"><div class = "pilotInfoBox">';
+                            newList += '<img class="pilotImg" src="images/pilot.png"/> <div id="pilotName" class="infoText">';
+                            newList += name;
+                            newList += '</div></div><div class = "pilotInfoBox"><img class="pilotImg" src="images/time.png"/>';
+                            newList += '<div id="waitTime" class="infoText">';
+                            newList += 'Has been waiting for ' + timeDiff;
+                            newList += '</div> </div></div></div>';
+
+                            waitingList[counter++] = newList;
                             break;
                         }
                     }
@@ -159,6 +167,11 @@ function getTimeDiff(oldTime){
         timeDiff = minutesDiff + " minutes";
     } else {
         timeDiff = hoursDiff + " hours and " + minutesDiff + " minutes";
+    }
+
+    //Take off last s if minute is 1
+    if(minutesDiff == 1){
+        timeDiff = timeDiff.substr(0, timeDiff.length - 1);
     }
 
     return timeDiff;
