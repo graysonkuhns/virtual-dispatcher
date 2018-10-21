@@ -30,8 +30,22 @@
     
     box-sizing: border-box;
     display:flex;
+    /* Compatibility */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     flex-direction:row;
+    /* Compatibility */
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
     align-items:center;
+    /* Compatibility */
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     height: 10vh;
     width: 100%;
     border: 4px solid black;
@@ -42,14 +56,38 @@
 
 .planeBox {
     display: flex;
+    /* Compatibility */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     flex-direction: column;
+    /* Compatibility */
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
     height: 100%;
 }
 
 .planeInfoBox {
     display:flex;
+    /* Compatibility */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     flex-direction:row;
+    /* Compatibility */
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
     align-items:center;
+    /* Compatibility */
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     height: 30%;
     margin: 2px;
 }
@@ -120,8 +158,22 @@
     
     box-sizing: border-box;
     display:flex;
+    /* Compatibility */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     flex-direction:row;
+    /* Compatibility */
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
     align-items:center;
+    /* Compatibility */
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     height: 10vh;
     width: 100%;
     min-width:180px;
@@ -133,36 +185,117 @@
 
 .pilotBox {
     display: flex;
+    /* Compatibility */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     flex-direction: column;
+    /* Compatibility */
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
     height: 100%;
 }
 
 .pilotInfoBox {
     display:flex;
+    /* Compatibility */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     flex-direction:row;
+    /* Compatibility */
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
     align-items:center;
+    /* Compatibility */
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     height: 30%;
     margin: 2px;
 }
 
 .pilotInfoBoxBig {
     display:flex;
+    /* Compatibility */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     flex-direction:row;
+    /* Compatibility */
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
     align-items:center;
+    /* Compatibility */
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     height: 55%;
     margin: 2px;
 }
 
 /* Tool Tip */
 
-#toolTip {
+#toolTipInitiator {
     position: fixed;
     bottom: 10px;
+    left: 0px;
     width: 100%;
-    text-align: center;
+    z-index: -1;
 }
 
 #toolTipImg {
-    width: 10%;
+    bottom: 0px;
     height: auto;
+    width: 5vh;
+    display: block;
+    margin-left:auto; 
+    margin-right:auto;
+    margin-top: 4px;
+}
+
+#toolTipTable {
+    background-color: var(--white-bg-translucent);
+    
+    table-layout: fixed;
+    border: 3px solid black;
+    margin-left:auto; 
+    margin-right:auto;
+    
+}
+
+#toolTipTable th {
+    text-align: left;
+    
+    border-bottom: 1px dashed black; 
+}
+
+.tipCellImg {
+    height: 2vw;
+    width: 2vw;
+}
+
+.tipCellText {
+    
+}
+
+#tipColorGreen {
+    background-color: var(--green-bg);
+}
+
+#tipColorGold {
+    background-color: var(--gold-bg);
+}
+
+#tipColorRed {
+    background-color: var(--red-bg);
 }
