@@ -3,7 +3,7 @@ var pilotName = "";
 var pilotId = "";
 var currentFlight;
 
-var host = "http://code-a-thon.xellitix.com:8080";
+var host = "";
 
 $(document).ready(function(){
     var loggedIn  = false;
