@@ -29,6 +29,7 @@ public class VirtualDispatcherApplication extends Application<VirtualDispatcherC
     @Override
     public void run(final VirtualDispatcherConfiguration configuration,
                     final Environment environment) {
+        // Serve API 
         environment.jersey().setUrlPattern("/api/*");
 
         Guice
