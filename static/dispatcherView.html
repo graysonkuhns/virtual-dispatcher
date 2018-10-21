@@ -8,22 +8,22 @@
     </head>
     <body>
         <div id="planeInfo" class="column">
-            <p class="header">Planes</p>
+            <p class="listHeader">Planes</p>
             <div id="planesList">
             
                 <div class = "plane">
                     <div class="planeBox">
                         <div class="planeInfoBox">
                             <img class="pilotImg" src="images/pilot.png"/>
-                            <div id="pilotName">Pilot Name</div>
+                            <div id="pilotName" class="infoText">Pilot Name</div>
                         </div>
                         <div class="planeInfoBox">
                             <img class="zoneImg" src="images/zone.png"/>
-                            <div id="zone">Zone</div>
+                            <div id="zone" class="infoText">Zone</div>
                         </div>
                         <div class="planeInfoBox" id="matienenceBox">
                             <img class="maintenanceImg" src="images/maintenance.png"/>
-                            <div id="maintenance">MX</div>
+                            <div id="maintenance" class="infoText">Maintenance</div>
                             <form action="#" method="POST">
                                 <input type="checkbox" id="maintenanceTrigger">
                             </form>
@@ -38,8 +38,23 @@
         </div>
         
         <div id="waitingList" class="column">
-            <p class="header">Waiting List</p>
-            <div id="pilotList"></div>
+            <p class="listHeader">Waiting List</p>
+            <div id="pilotList">
+                
+                <div class = "pilot">
+                    <div class = "pilotBox">
+                        <div class = "pilotInfoBox">
+                            <img class="pilotImg" src="images/pilot.png"/>
+                            <div id="pilotName" class="infoText">Pilot Name</div>
+                        </div>
+                        <div class = "pilotInfoBox">
+                            <img class="pilotImg" src="images/time.png"/>
+                            <div id="waitTime" class="infoText">Wait Time</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </body>
 </html>
