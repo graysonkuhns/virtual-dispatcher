@@ -242,7 +242,7 @@ function planeLoader(){
             } else {
                 //Create plane that needs maintenance
                 var newPlane = '<div class = "plane"><div class="planeBox">';
-                newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">MX</div>';
+                newPlane += '<div class="planeInfoBox" id="matienenceBox"><img class="infoImg" src="images/maintenance.png"/><div id="maintenance" class="infoText">Maintenance</div>';
                 newPlane += '<form action="#" method="POST"><input type="checkbox" id="maintenanceTrigger" data-id="' + plane.id + '" checked></form></div></div>';
                 newPlane += '<img class="tailBottom" src="images/tail_maintenance.png"/><img class="tailTop" src="images/tail_top.png"/><div id="planeNumber">' + plane.id + '</div></div>';
                 
