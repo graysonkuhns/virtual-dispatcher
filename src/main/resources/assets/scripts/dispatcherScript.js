@@ -23,6 +23,11 @@ function loadPlanes(){
         planeTimer = setInterval(planeLoader, 1000);
     });
 
+    $(document).on('click', function() {
+        //Start refreshing page again
+        planeTimer = setInterval(planeLoader, 1000);
+    });
+
     $("#planesList").on('change', '#maintenanceTrigger', function() {
         var planeId = $(this).attr("data-id");
         if($(this).is(':checked')){
