@@ -23,6 +23,15 @@ status boxes show the pilot name, the assigned practice zone, and whether the ai
 also click a box to change the maintenance status of any unassigned aircraft. Virtual Dispatcher could potentially be expanded to
 include integration with existing aircraft scheduling and maintenance software currently used by the University.
 
+## Web Routes
+
+### UI
+
+* `/` - Flight status.
+* `/checkin.html` - Check in / out.
+* `/dispatcherView.html` - The dispatcher view. Shows the wait list and the state of all aircraft
+* `/waitingRoom.html` - The waiting room view.
+
 ## Technical Prerequisites
 
 ### Production
