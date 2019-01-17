@@ -32,9 +32,6 @@ include integration with existing aircraft scheduling and maintenance software c
 * `/dispatcherView.html` - The dispatcher view. Shows the wait list and the state of all aircraft
 * `/waitingRoom.html` - The waiting room view.
 
-### Live URL
-vd.xellitix.com
-
 ## Technical Prerequisites
 
 ### Production
